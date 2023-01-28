@@ -1,5 +1,4 @@
-
-export const PlanBuilder = () => {
+export const Builder = () => {
     return (
         <div>PlanBuilder</div>
     )
