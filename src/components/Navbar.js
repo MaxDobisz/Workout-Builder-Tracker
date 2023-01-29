@@ -84,7 +84,7 @@ export const Navbar = () => {
                             </MenuItem>
                         </Menu>
                     </Box>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center', }}>
                         <Link component={RouterLink} to="/" underline="none">
                             <Button sx={{ my: 2, color: 'white', display: 'block' }}>
                                 Home
