@@ -21,6 +21,8 @@ const theme = createTheme({
         richBlack2: "#020505ff",
         richBlack3: "#060B0Eff",
         khaki: "#BDB098ff",
+        silver: "#B1BFC3",
+        darkBlue: "#0F4273"
     }
 });
 

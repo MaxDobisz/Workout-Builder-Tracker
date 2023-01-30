@@ -12,6 +12,8 @@ import MenuItem from '@mui/material/MenuItem';
 import {
     Link as RouterLink,
 } from 'react-router-dom';
+import { NavbarButton } from './NavbarButton';
+
 
 export const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -25,7 +27,7 @@ export const Navbar = () => {
     };
 
     return (
-        <AppBar position="absolute">
+        <AppBar position='absolute' color='transparent' sx={{ boxShadow: 'none', color: 'transparent' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -84,31 +86,31 @@ export const Navbar = () => {
                             </MenuItem>
                         </Menu>
                     </Box>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center', }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center', background: 'none' }}>
                         <Link component={RouterLink} to="/" underline="none">
-                            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                            <NavbarButton sx={{ my: 2, color: 'white', display: 'block' }}>
                                 Home
-                            </Button>
+                            </NavbarButton>
                         </Link>
                         <Link component={RouterLink} to="/builder" underline="none">
-                            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                                Plan builder
-                            </Button>
+                            <NavbarButton sx={{ my: 2, color: 'white', display: 'block' }}>
+                                Builder
+                            </NavbarButton>
                         </Link>
                         <Link component={RouterLink} to="/plans" underline="none">
-                            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                                Your plans
-                            </Button>
+                            <NavbarButton sx={{ my: 2, color: 'white', display: 'block' }}>
+                                Plans
+                            </NavbarButton>
                         </Link>
                         <Link component={RouterLink} to="/tracker" underline="none">
-                            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                                Plans tracker
-                            </Button>
+                            <NavbarButton sx={{ my: 2, color: 'white', display: 'block' }}>
+                                Tracker
+                            </NavbarButton>
                         </Link>
                         <Link component={RouterLink} to="/news" underline="none">
-                            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                            <NavbarButton sx={{ my: 2, color: 'white', display: 'block' }}>
                                 News
-                            </Button>
+                            </NavbarButton>
                         </Link>
                     </Box>
                 </Toolbar>
