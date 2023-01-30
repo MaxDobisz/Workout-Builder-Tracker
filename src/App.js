@@ -8,7 +8,7 @@ export const App = () => {
     return (
         <>
             <CssBaseline />
-            <div style={{ height: '100vh', backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}>
+            <div style={{ height: '100vh', backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}> {/* styled component instead ? */}
                 <BrowserRouter>
                     <Navbar />
                     <AppRoutes />
