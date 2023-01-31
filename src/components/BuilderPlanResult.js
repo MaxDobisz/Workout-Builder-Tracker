@@ -1,11 +1,10 @@
-import { Container, Box, Typography, Stack } from "@mui/material";
+import { Container, Typography, Stack } from "@mui/material";
 import { NumberSelector } from './NumberSelector';
-
 
 export const BuilderPlanResult = () => {
     return (
         <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center', gap: '1rem' }} >
-            <Stack direction={'column'} sx={{ backgroundColor: 'white' }}>
+            <Stack direction={'column'} sx={{ backgroundColor: 'white' }}> {/* Day container*/}
                 <Typography> DAY 1</Typography>
                 <Stack direction={'column'} spacing={4}> {/* LIST OF EXERCISES */}
                     <Stack direction={'column'} sx={{ border: '2px solid red' }}> {/* Exercise Container */}
@@ -140,43 +139,6 @@ export const BuilderPlanResult = () => {
 
                 </Stack>
             </Stack>
-
-
-
-
-
-
-
-
-            {/* <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-
-                <Box sx={{ backgroundColor: 'white' }}>
-
-                    <Box >
-
-
-                    </Box>
-                    <Typography>Exercice 1</Typography>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-
-                        <NumberSelector />
-                    </Box>
-
-                </Box>
-            </Box> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
         </Container>
     )
 }

@@ -18,10 +18,6 @@ export const BuilderPlanCreator = () => {
                     <ExercisesTransfer />
                 </Box>
 
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button variant='contained'>Next</Button>
-                </Box>
-
             </Stack>
         </Container>
     )
