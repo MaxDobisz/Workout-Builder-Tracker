@@ -7,11 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import {
-    Link as RouterLink,
-} from 'react-router-dom';
+import { Link as RouterLink, } from 'react-router-dom';
 import { NavbarButton } from './NavbarButton';
 
 
@@ -27,7 +24,7 @@ export const Navbar = () => {
     };
 
     return (
-        <AppBar position='absolute' color='transparent' sx={{ boxShadow: 'none', color: 'transparent' }}>
+        <AppBar position='static' color='transparent' sx={{ height: '10%', boxShadow: 'none' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
