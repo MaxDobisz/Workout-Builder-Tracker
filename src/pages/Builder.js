@@ -3,23 +3,20 @@ import { BuilderPlanResult } from "../components/BuilderPlanResult"
 import { useState } from 'react';
 import { Stack, Box, Button } from "@mui/material"
 
-
 export const Builder = () => {
-    const [step, setStep] = useState(1);
+    const [showResult, setShowResult] = useState(false);
 
     const handleButtonClick = () => {
         //if step === 1 &&& days are not empty:
-        setStep(2);
+        setShowResult(true)
     }
 
     return (
-        <Stack direction='column' sx={{ alignItems: 'center' }}>
-            {step === 1 && <BuilderPlanCreator />}
-            {step === 2 && <BuilderPlanResult />}
-
+        <Stack direction='column' alignItems='center'>
+            {showResult ? <BuilderPlanResult /> : <BuilderPlanCreator />}
             <Box>
-                <Button onClick={handleButtonClick} variant='contained' size="large" >
-                    {step === 1 ? 'next' : 'save'}
+                <Button onClick={handleButtonClick} variant='contained' size="large">
+                    {showResult === 1 ? 'next' : 'save'}
                 </Button>
             </Box>
         </Stack>

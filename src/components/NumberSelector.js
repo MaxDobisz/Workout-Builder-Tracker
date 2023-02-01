@@ -14,7 +14,7 @@ export const NumberSelector = () => {
     };
 
     return (
-        <Box sx={{ backgroundColor: 'white', border: '2px solid black' }}>
+        <Box backgroundColor='white' border='2px solid black'>
             <FormControl fullWidth>
                 <NativeSelect
                     defaultValue={30}
