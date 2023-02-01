@@ -14,7 +14,7 @@ export const DaysSelector = () => {
     };
 
     return (
-        <Box sx={{ minWidth: 120, backgroundColor: 'white' }}>
+        <Box minWidth={120} backgroundColor='white' >
             <FormControl fullWidth>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native">
                     Day

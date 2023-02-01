@@ -11,7 +11,6 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link as RouterLink, } from 'react-router-dom';
 import { NavbarButton } from './NavbarButton';
 
-
 export const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -27,7 +26,7 @@ export const Navbar = () => {
         <AppBar position='static' color='transparent' sx={{ height: '10%', boxShadow: 'none' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box flexGrow={1} display={{ xs: 'flex', md: 'none' }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -83,7 +82,7 @@ export const Navbar = () => {
                             </MenuItem>
                         </Menu>
                     </Box>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center', background: 'none' }}>
+                    <Box display={{ xs: 'none', md: 'flex' }} flexGrow={1} justifyContent='center' background='none'>
                         <Link component={RouterLink} to="/" underline="none">
                             <NavbarButton sx={{ my: 2, color: 'white', display: 'block' }}>
                                 Home

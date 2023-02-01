@@ -65,6 +65,7 @@ export const ExercisesTransfer = () => {
         <Paper sx={{ width: 200, height: 230, overflow: 'auto' }}>
             <List dense component="div" role="list">
                 {items.map((value) => {
+
                     const labelId = `transfer-list-item-${value}-label`;
 
                     return (
@@ -95,7 +96,7 @@ export const ExercisesTransfer = () => {
     return (
         <Grid container spacing={2} justifyContent="center" alignItems="center">
             <Grid item>
-                <Box sx={{ backgroundColor: 'white', p: '1rem' }}>
+                <Box backgroundColor='white' p='1rem'>
                     Exercises
                 </Box>
                 {customList(left)}
