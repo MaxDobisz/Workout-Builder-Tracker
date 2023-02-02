@@ -1,91 +1,33 @@
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useState } from 'react';
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
-    },
-};
-
-const names = [
-    "back",
-    "cardio",
-    "chest",
-    "lower arms",
-    "lower legs",
-    "neck",
-    "shoulders",
-    "upper arms",
-    "upper legs",
-    "waist",
-];
-
-function getStyles(name, personName, theme) {
-    return {
-        fontWeight:
-            personName.indexOf(name) === -1
-                ? theme.typography.fontWeightRegular
-                : theme.typography.fontWeightMedium,
-    };
-}
-
-export const ExercisesSelector = () => {
-    const theme = useTheme();
-    const [personName, setPersonName] = useState([]);
+export const ExercisesSelector = ({ setSelectedTypeOfExercises }) => {
+    const setOfExercisesTypes = ['back', 'cardio', 'chest', 'lower arms', 'lower legs', 'neck', 'shoulders', 'upper arms', 'upper legs', 'waist']
+    const [typesOfExercises, setTypesOfExercises] = useState('');
 
     const handleChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        setPersonName(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value,
-        );
+        setTypesOfExercises(event.target.value);
+        setSelectedTypeOfExercises(event.target.value);
     };
 
     return (
-        <div>
-            <FormControl sx={{ width: 200 }}>
-                <Select
-                    multiple
-                    displayEmpty
-                    value={personName}
+        <Box minWidth={280} backgroundColor='white'>
+            <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Select Select type of exercises</InputLabel>
+                <Select 
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={typesOfExercises}
+                    label="Select type of exercises"
                     onChange={handleChange}
-                    input={<OutlinedInput />}
-                    renderValue={(selected) => {
-                        if (selected.length === 0) {
-                            return <em>Select type of exercises</em>;
-                        }
-
-                        return selected.join(', ');
-                    }}
-                    MenuProps={MenuProps}
-                    inputProps={{ 'aria-label': 'Without label' }}
-                    sx={{ color: 'black', backgroundColor: 'white', border: '2px solid silver' }}
                 >
-                    <MenuItem disabled value="">
-                        {/* <em>Placeholder</em> */}
-                    </MenuItem>
-                    {names.map((name) => (
-                        <MenuItem
-                            key={name}
-                            value={name}
-                            style={getStyles(name, personName, theme)}
-                        >
-                            {name}
-                        </MenuItem>
-                    ))}
+                    {setOfExercisesTypes.map(type => <MenuItem value={type} key={type}>{type}</MenuItem>)}
                 </Select>
             </FormControl>
-        </div>
+        </Box>
     );
 }
