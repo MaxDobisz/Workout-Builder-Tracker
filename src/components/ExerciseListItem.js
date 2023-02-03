@@ -1,14 +1,19 @@
 import uuid from 'react-uuid';
 import { List, ListItem, ListItemIcon, ListItemText, Checkbox, Stack, Divider } from '@mui/material';
-
-
 import { ExerciseDetailsModal } from './ExerciseDetailsModal';
 import { Box } from '@mui/material';
+import { useContext } from 'react';
+import { ExercisesContext } from '../context/context';
 
 export const ExerciseListItem = ({ items, checkedItems, handleToggle }) => {
+    const { includeEquipment } = useContext(ExercisesContext)
+    const filteredExercisesBasedOnEquipmentAvailability = includeEquipment ? items : items.filter(exer => exer.equipment === 'body weight')
+
+    console.log(filteredExercisesBasedOnEquipmentAvailability)
+
     return (
         <List sx={{ p: 0, width: '100%' }} dense component="div" role="list">
-            {items.map((value) => {
+            {filteredExercisesBasedOnEquipmentAvailability.map((value) => {
                 const labelId = `transfer-list-item-${value}-label`;
                 return (
                     <Box key={uuid()}>
@@ -35,3 +40,6 @@ export const ExerciseListItem = ({ items, checkedItems, handleToggle }) => {
         </List>
     )
 }
+
+
+//change equipment text for body weight only , provide better names 

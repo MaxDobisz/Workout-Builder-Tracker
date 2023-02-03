@@ -9,25 +9,25 @@ export const DaysSelector = () => {
     };
 
     return (
-        <Box minWidth={120} backgroundColor='white' >
-            <FormControl fullWidth>
-                <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                    Day
+        <Box minWidth={120} backgroundColor='white' fontWeight='700' border='2px solid black' >
+            <FormControl fullWidth >
+                <InputLabel variant="standard" htmlFor="uncontrolled-native" sx={{ height: '1.5rem' }}>
+                    Day of the week
                 </InputLabel>
-                <NativeSelect
+                <NativeSelect sx={{ height: '2.5rem', border: 'none' }}
                     defaultValue={30}
                     inputProps={{
                         name: 'day',
                         id: 'uncontrolled-native',
                     }}
                 >
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                    <option value={5}>5</option>
-                    <option value={6}>6</option>
-                    <option value={7}>7</option>
+                    <option value={1}>Monday</option>
+                    <option value={2}>Tuesday</option>
+                    <option value={3}>Wednesday</option>
+                    <option value={4}>Thursday</option>
+                    <option value={5}>Friday</option>
+                    <option value={6}>Saturday</option>
+                    <option value={7}>Sunday</option>
                 </NativeSelect>
             </FormControl>
         </Box>

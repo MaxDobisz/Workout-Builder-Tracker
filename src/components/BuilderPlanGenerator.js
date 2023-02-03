@@ -9,6 +9,8 @@ import { ExercisesContext } from '../context/context';
 export const BuilderPlanGenerator = () => {
     const [selectedTypeOfExercises, setSelectedTypeOfExercises] = useState('');
     const [listOfExercises, setListOfExercises] = useState([]);
+    const [includeEquipment, setIncludeEquipment] = useState(true);
+
 
     useEffect(() => {
         const options = {
@@ -40,7 +42,7 @@ export const BuilderPlanGenerator = () => {
     }, [selectedTypeOfExercises]);
 
     return (
-        <ExercisesContext.Provider value={{ listOfExercises, setSelectedTypeOfExercises }}>
+        <ExercisesContext.Provider value={{ listOfExercises, setSelectedTypeOfExercises, includeEquipment, setIncludeEquipment }}>
             <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center' }} >
                 <Stack spacing={3}>
                     <Box display='flex' alignItems='center' justifyContent='center' gap='1rem'>{/*  wrapper for inputs ( exercises selector / equipment swich) */}
