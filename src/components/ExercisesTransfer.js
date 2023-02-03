@@ -63,7 +63,7 @@ export const ExercisesTransfer = () => {
     };
 
     const customList = items => (
-        <Stack sx={{ width: 400, height: 500, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center' }} >
+        <Stack sx={{ width: 400, height: 500, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center' }}>
             {items && items.length === 0 ? <Box> no exercises </Box> : <ExerciseListItem items={items} checkedItems={checked} handleToggle={handleToggle} />
             }
         </Stack >
@@ -72,7 +72,7 @@ export const ExercisesTransfer = () => {
     return (
         <Grid container spacing={2} justifyContent="center" alignItems="center">
             <Grid item>{/* list 1 */}
-                <Box sx={{ backgroundColor: 'white', p: '1rem', textAlign: 'center', fontWeight: '700', border: '2px solid black' }}>
+                <Box display='flex' justifyContent='center' alignItems='center' sx={{ height: '4rem', backgroundColor: 'white', textAlign: 'center', fontWeight: '700', border: '2px solid black' }}>
                     EXERCISES
                 </Box>
                 {customList(left)}

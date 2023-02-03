@@ -1,4 +1,6 @@
 import { FormGroup, Switch, styled, FormControlLabel } from '@mui/material';
+import { useContext } from 'react';
+import { ExercisesContext } from '../context/context';
 
 const Android12Switch = styled(Switch)(({ theme }) => ({
     padding: 8,
@@ -43,8 +45,10 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
 
 
 export const EquipmentSwitch = () => {
+    const { setIncludeEquipment, includeEquipment } = useContext(ExercisesContext);
+
     return (
-        <FormGroup>
+        <FormGroup onChange={() => { setIncludeEquipment(!includeEquipment) }}>
             <FormControlLabel control={<Android12Switch defaultChecked />} label="Equipment" sx={{ color: 'white' }} />
         </FormGroup>
     );
