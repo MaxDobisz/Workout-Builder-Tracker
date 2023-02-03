@@ -1,7 +1,4 @@
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
-import { styled } from '@mui/material/styles';
+import { FormGroup, Switch, styled, FormControlLabel } from '@mui/material';
 
 const Android12Switch = styled(Switch)(({ theme }) => ({
     padding: 8,

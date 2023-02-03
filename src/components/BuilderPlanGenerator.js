@@ -1,9 +1,10 @@
-import { Container, Stack, Box } from "@mui/material"
-import { ExercisesSelector } from "./ExercisesSelector"
-import { EquipmentSwitch } from "./EquipmentSwitch"
-import { ExercisesTransfer } from "./ExercisesTransfer"
 import { useEffect, useState } from 'react';
 import axios from "axios";
+import { Container, Stack, Box } from "@mui/material";
+import { ExercisesSelector } from "./ExercisesSelector";
+import { EquipmentSwitch } from "./EquipmentSwitch";
+import { ExercisesTransfer } from "./ExercisesTransfer";
+import { ExercisesContext } from '../context/context';
 
 export const BuilderPlanGenerator = () => {
     const [selectedTypeOfExercises, setSelectedTypeOfExercises] = useState('');
@@ -39,19 +40,18 @@ export const BuilderPlanGenerator = () => {
     }, [selectedTypeOfExercises]);
 
     return (
-        <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center' }} >
-            <Stack spacing={3}>
-
-                <Box display='flex' alignItems='center' justifyContent='center' gap='1rem'>
-                    <ExercisesSelector setSelectedTypeOfExercises={setSelectedTypeOfExercises} />
-                    <EquipmentSwitch />
-                </Box>
-
-                <Box display='flex' alignItems='center' gap='1rem'>
-                    <ExercisesTransfer listOfExercises={listOfExercises} />
-                </Box>
-
-            </Stack>
-        </Container>
+        <ExercisesContext.Provider value={{ listOfExercises, setSelectedTypeOfExercises }}>
+            <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center' }} >
+                <Stack spacing={3}>
+                    <Box display='flex' alignItems='center' justifyContent='center' gap='1rem'>{/*  wrapper for inputs ( exercises selector / equipment swich) */}
+                        <ExercisesSelector />
+                        <EquipmentSwitch />
+                    </Box>
+                    <Box display='flex' alignItems='center' gap='1rem'> {/* wrapper for transferList */}
+                        <ExercisesTransfer />
+                    </Box>
+                </Stack>
+            </Container>
+        </ExercisesContext.Provider>
     )
 }

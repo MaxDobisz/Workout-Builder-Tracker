@@ -1,10 +1,8 @@
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Box, Grid, Button, Stack } from '@mui/material';
 import { DaysSelector } from './DaysSelector';
-import { Box } from '@mui/system';
 import { ExerciseListItem } from './ExerciseListItem';
+import { ExercisesContext } from '../context/context';
 
 function not(a, b) {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -14,11 +12,11 @@ function intersection(a, b) {
     return a.filter((value) => b.indexOf(value) !== -1);
 }
 
-export const ExercisesTransfer = ({ listOfExercises }) => {
+export const ExercisesTransfer = () => {
     const [checked, setChecked] = useState([]);
     const [left, setLeft] = useState([]);
     const [right, setRight] = useState([]);
-
+    const { listOfExercises } = useContext(ExercisesContext);
     const leftChecked = intersection(checked, left);
     const rightChecked = intersection(checked, right);
 

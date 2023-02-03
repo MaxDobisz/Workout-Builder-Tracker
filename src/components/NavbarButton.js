@@ -1,5 +1,4 @@
-import { Button } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Button, styled } from '@mui/material';
 
 export const NavbarButton = styled(Button)(({ theme }) => ({
     fontSize: '1.2rem',

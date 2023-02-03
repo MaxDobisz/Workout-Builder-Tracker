@@ -1,13 +1,12 @@
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { Box, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
+import { ExercisesContext } from '../context/context';
 
-export const ExercisesSelector = ({ setSelectedTypeOfExercises }) => {
+
+export const ExercisesSelector = () => {
     const setOfExercisesTypes = ['back', 'cardio', 'chest', 'lower arms', 'lower legs', 'neck', 'shoulders', 'upper arms', 'upper legs', 'waist']
     const [typesOfExercises, setTypesOfExercises] = useState('');
+    const { setSelectedTypeOfExercises } = useContext(ExercisesContext);
 
     const handleChange = (event) => {
         setTypesOfExercises(event.target.value);
