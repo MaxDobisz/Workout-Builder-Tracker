@@ -6,10 +6,12 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 import { useEffect, useState } from 'react';
 import { DaysSelector } from './DaysSelector';
 import { Box } from '@mui/system';
 import uuid from 'react-uuid';
+import { ExerciseDetailsModal } from './ExerciseDetailsModal';
 
 function not(a, b) {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -21,15 +23,17 @@ function intersection(a, b) {
 
 export const ExercisesTransfer = ({ listOfExercises }) => {
     const [checked, setChecked] = useState([]);
-    const [left, setLeft] = useState([0, 1, 2, 3]);
+    const [left, setLeft] = useState([]);
     const [right, setRight] = useState([]);
 
     const leftChecked = intersection(checked, left);
     const rightChecked = intersection(checked, right);
 
     useEffect(() => {
-        const listaCwiczen = listOfExercises.map(exer => exer.name)
-        setLeft(listaCwiczen)
+        if (listOfExercises && listOfExercises.length > 0) {
+            setLeft(listOfExercises)
+        }
+
     }, [listOfExercises])
 
     const handleToggle = (value) => () => {
@@ -67,19 +71,18 @@ export const ExercisesTransfer = ({ listOfExercises }) => {
         setRight([]);
     };
 
-    const customList = (items) => (
+    // const handleButtonClick = () => {
+    //     //show modal
+    // }
+
+    const customList = items => (
         <Paper sx={{ width: 400, height: 500, overflow: 'auto' }}>
             <List dense component="div" role="list">
                 {items.map((value) => {
                     const labelId = `transfer-list-item-${value}-label`;
-
                     return (
-                        <ListItem
-                            key={uuid()}
-                            role="listitem"
-                            button
-                            onClick={handleToggle(value)}
-                        >
+                        <Stack flexDirection={'row'}>
+                            <ListItem key={uuid()} role="listitem" button onClick={handleToggle(value)}>
                             <ListItemIcon>
                                 <Checkbox
                                     checked={checked.indexOf(value) !== -1}
@@ -90,8 +93,11 @@ export const ExercisesTransfer = ({ listOfExercises }) => {
                                     }}
                                 />
                             </ListItemIcon>
-                            <ListItemText id={labelId} primary={`${value}`} />
-                        </ListItem>
+                                <ListItemText id={labelId} primary={`${value.name}`} />
+                            </ListItem>
+                            {/* <Button onClick={handleButtonClick}>Details</Button> */}
+                            <ExerciseDetailsModal exercise={value} />
+                        </Stack>
                     );
                 })}
             </List>
