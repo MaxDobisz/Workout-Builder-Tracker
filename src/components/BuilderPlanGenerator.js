@@ -38,8 +38,6 @@ export const BuilderPlanGenerator = () => {
 
     }, [selectedTypeOfExercises]);
 
-
-
     return (
         <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center' }} >
             <Stack spacing={3}>

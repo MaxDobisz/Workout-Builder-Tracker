@@ -1,17 +1,10 @@
 import Grid from '@mui/material/Grid';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { useEffect, useState } from 'react';
 import { DaysSelector } from './DaysSelector';
 import { Box } from '@mui/system';
-import uuid from 'react-uuid';
-import { ExerciseDetailsModal } from './ExerciseDetailsModal';
+import { ExerciseListItem } from './ExerciseListItem';
 
 function not(a, b) {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -71,48 +64,22 @@ export const ExercisesTransfer = ({ listOfExercises }) => {
         setRight([]);
     };
 
-    // const handleButtonClick = () => {
-    //     //show modal
-    // }
-
     const customList = items => (
-        <Paper sx={{ width: 400, height: 500, overflow: 'auto' }}>
-            <List dense component="div" role="list">
-                {items.map((value) => {
-                    const labelId = `transfer-list-item-${value}-label`;
-                    return (
-                        <Stack flexDirection={'row'}>
-                            <ListItem key={uuid()} role="listitem" button onClick={handleToggle(value)}>
-                            <ListItemIcon>
-                                <Checkbox
-                                    checked={checked.indexOf(value) !== -1}
-                                    tabIndex={-1}
-                                    disableRipple
-                                    inputProps={{
-                                        'aria-labelledby': labelId,
-                                    }}
-                                />
-                            </ListItemIcon>
-                                <ListItemText id={labelId} primary={`${value.name}`} />
-                            </ListItem>
-                            {/* <Button onClick={handleButtonClick}>Details</Button> */}
-                            <ExerciseDetailsModal exercise={value} />
-                        </Stack>
-                    );
-                })}
-            </List>
-        </Paper>
+        <Stack sx={{ width: 400, height: 500, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center' }} >
+            {items && items.length === 0 ? <Box> no exercises </Box> : <ExerciseListItem items={items} checkedItems={checked} handleToggle={handleToggle} />
+            }
+        </Stack >
     );
 
     return (
         <Grid container spacing={2} justifyContent="center" alignItems="center">
-            <Grid item>
-                <Box sx={{ backgroundColor: 'white', p: '1rem' }}>
-                    Exercises
+            <Grid item>{/* list 1 */}
+                <Box sx={{ backgroundColor: 'white', p: '1rem', textAlign: 'center', fontWeight: '700', border: '2px solid black' }}>
+                    EXERCISES
                 </Box>
                 {customList(left)}
             </Grid>
-            <Grid item>
+            <Grid item> {/* buttons */}
                 <Grid container direction="column" alignItems="center">
                     <Button
                         sx={{ my: 0.5 }}
@@ -156,7 +123,7 @@ export const ExercisesTransfer = ({ listOfExercises }) => {
                     </Button>
                 </Grid>
             </Grid>
-            <Grid item>
+            <Grid item> {/* list 2 */}
                 <DaysSelector />
                 {customList(right)}
             </Grid>
