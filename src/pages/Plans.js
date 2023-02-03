@@ -1,6 +1,5 @@
-import { margin, Stack, Box } from "@mui/system"
-import { Plan } from "../components/Plan"
-import Grid from '@mui/material/Unstable_Grid2';
+import { Grid } from "@mui/material";
+import { Plan } from "../components/Plan";
 
 export const Plans = () => {
     return (

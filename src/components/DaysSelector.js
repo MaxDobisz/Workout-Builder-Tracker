@@ -1,10 +1,5 @@
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import { useState } from 'react';
-import { NativeSelect } from '@mui/material';
+import { Box, NativeSelect, InputLabel, FormControl } from '@mui/material';
 
 export const DaysSelector = () => {
     const [day, setDay] = useState('');

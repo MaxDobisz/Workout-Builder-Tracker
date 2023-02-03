@@ -1,5 +1,4 @@
-import { Tab } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Tab, styled } from '@mui/material';
 
 export const NavTab = styled(Tab)(({ theme }) => ({
     color: 'white',

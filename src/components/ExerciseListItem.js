@@ -1,11 +1,6 @@
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
-import Stack from '@mui/material/Stack';
-import Divider from '@mui/material/Divider';
 import uuid from 'react-uuid';
+import { List, ListItem, ListItemIcon, ListItemText, Checkbox, Stack, Divider } from '@mui/material';
+
 
 import { ExerciseDetailsModal } from './ExerciseDetailsModal';
 import { Box } from '@mui/material';

@@ -1,8 +1,8 @@
+import { useState } from 'react';
+import { Stack, Box, Button } from "@mui/material";
 import { BuilderPlanGenerator } from "../components/BuilderPlanGenerator";
 import { BuilderPlanResult } from "../components/BuilderPlanResult";
-import { useEffect, useState } from 'react';
-import { Stack, Box, Button } from "@mui/material";
-import axios from "axios";
+
 
 export const Builder = () => {
     const [showResult, setShowResult] = useState(false);
