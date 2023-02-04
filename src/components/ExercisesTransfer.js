@@ -17,7 +17,7 @@ export const ExercisesTransfer = () => {
     const [left, setLeft] = useState([]);
     const [day, setDay] = useState('monday');
 
-    const [monday, setMonday] = useState([]); /*  change for object reducer*/
+    const [monday, setMonday] = useState([]); 
     const [tuesday, setTuesday] = useState([]);
     const [wednesday, setWednesday] = useState([]);
     const [thursday, setThursday] = useState([]);
@@ -80,32 +80,65 @@ export const ExercisesTransfer = () => {
         setChecked(not(checked, leftChecked));
     };
 
+    const handleRemoveListItem = (value) => {
+        switch (day) {
+            case 'monday':
+                setMonday(monday.filter(item => item !== value));
+                break;
+            case 'tuesday':
+                setTuesday(tuesday.filter(item => item !== value));
+                break;
+            case 'wednesday':
+                setWednesday(wednesday.filter(item => item !== value));
+                break;
+            case 'thursday':
+                setThursday(thursday.filter(item => item !== value));
+                break;
+            case 'friday':
+                setFriday(friday.filter(item => item !== value));
+                break;
+            case 'saturday':
+                setSaturday(saturday.filter(item => item !== value));
+                break;
+            case 'sunday':
+                setSunday(sunday.filter(item => item !== value));
+                break;
+            default:
+                console.log('error');
+        }
+    }
 
-    const customList = items => (
+
+    const customList = (items, right) => (
+
+        // if items are from left render normal, otherwise render another
         <Stack sx={{ width: 400, height: 500, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center' }}>
-            {items && items.length === 0 ? <Box> no exercises </Box> : <ExerciseListItem items={items} checkedItems={checked} handleToggle={handleToggle} />
+            {items && items.length === 0 ? <Box> no exercises </Box> : <ExerciseListItem items={items} checkedItems={checked} handleToggle={handleToggle} handleRemoveListItem={handleRemoveListItem} right={right} />
             }
         </Stack >
     );
 
+
+
     const showSelectedList = (day) => {
         switch (day) {
             case 'monday':
-                return customList(monday);
+                return customList(monday, true);
+
             case 'tuesday':
-                return customList(tuesday);
+                return customList(tuesday, true);
             case 'wednesday':
-                return customList(wednesday);
+                return customList(wednesday, true);
             case 'thursday':
-                return customList(thursday);
+                return customList(thursday, true);
             case 'friday':
-                return customList(friday);
+                return customList(friday, true);
             case 'saturday':
-                return customList(saturday);
+                return customList(saturday, true);
             case 'sunday':
-                return customList(sunday);
+                return customList(sunday, true);
             default:
-                console.log('zjebalo sie');
+                console.log('error');
         }
     }
 
@@ -115,7 +148,7 @@ export const ExercisesTransfer = () => {
                 <Box display='flex' justifyContent='center' alignItems='center' sx={{ height: '4rem', backgroundColor: 'white', textAlign: 'center', fontWeight: '700', border: '2px solid black' }}>
                     EXERCISES
                 </Box>
-                {customList(left)}
+                {customList(left, false)}
             </Grid>
             <Grid item> {/* buttons */}
                 <Grid container direction="column" alignItems="center">
@@ -134,7 +167,6 @@ export const ExercisesTransfer = () => {
             <Grid item> {/* list 2 */}
                 <DaysSelector day={day} setDay={setDay} />
                 {showSelectedList(day)}
-                {/* {customList(right)} display list( list depends on selected day) , parameter === list data */}
             </Grid>
         </Grid>
     );

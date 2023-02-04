@@ -26,16 +26,16 @@ export const BuilderPlanGenerator = () => {
             try {
                 const { data } = await axios.request(options); /*data =  is array with exercises objects */
                 if (data && data.length > 0) {
-                    console.log('fetch success')
+                    // console.log('fetch success')
                     setListOfExercises(data);
                 }
             } catch (error) {
-                console.log('error')
+                // console.log('error')
             }
         }
 
         if (selectedTypeOfExercises) {
-            console.log('Im calling API');
+            // console.log('Im calling API');
             fetchData()
         }
 

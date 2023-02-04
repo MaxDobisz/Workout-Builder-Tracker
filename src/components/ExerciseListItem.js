@@ -1,14 +1,15 @@
 import uuid from 'react-uuid';
-import { List, ListItem, ListItemIcon, ListItemText, Checkbox, Stack, Divider } from '@mui/material';
+import { List, ListItem, ListItemIcon, ListItemText, Checkbox, Stack, Divider, Icon, Button } from '@mui/material';
 import { ExerciseDetailsModal } from './ExerciseDetailsModal';
 import { Box } from '@mui/material';
 import { useContext } from 'react';
 import { ExercisesContext } from '../context/context';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-export const ExerciseListItem = ({ items, checkedItems, handleToggle }) => {
-    const { includeEquipment } = useContext(ExercisesContext)
+export const ExerciseListItem = ({ items, checkedItems, handleToggle, handleRemoveListItem, right }) => {
+    const { includeEquipment } = useContext(ExercisesContext);
 
-    const filteredExercisesBasedOnEquipmentAvailability = includeEquipment ? items : items.filter(exer => exer.equipment === 'body weight')
+    const filteredExercisesBasedOnEquipmentAvailability = includeEquipment ? items : items.filter(exer => exer.equipment === 'body weight');
 
     return (
         <List sx={{ p: 0, width: '100%' }} dense component="div" role="list">
@@ -17,7 +18,16 @@ export const ExerciseListItem = ({ items, checkedItems, handleToggle }) => {
                 return (
                     <Box key={uuid()}>
                         <Stack flexDirection='row' alignItems='center'> {/* 1 exercise on the list */}
-                            <ListItem sx={{ p: 0 }} role="listitem" button onClick={handleToggle(value)}>
+                            {right ?
+
+                                <ListItem sx={{ p: 0 }} role="listitem"  >
+                                    <ListItemIcon sx={{ bgColor: 'black' }} >
+                                        <Button onClick={() => { handleRemoveListItem(value) }}><Icon><DeleteIcon /></Icon></Button>
+                                    </ListItemIcon>
+                                    <ListItemText id={labelId} primary={`${value.name}`} />
+                                </ListItem>
+                                : 
+                                <ListItem sx={{ p: 0 }} role="listitem" button onClick={handleToggle(value)}>
                                 <ListItemIcon >
                                     <Checkbox
                                         checked={checkedItems.indexOf(value) !== -1}
@@ -29,7 +39,7 @@ export const ExerciseListItem = ({ items, checkedItems, handleToggle }) => {
                                     />
                                 </ListItemIcon>
                                 <ListItemText id={labelId} primary={`${value.name}`} />
-                            </ListItem>
+                                </ListItem>}
                             <ExerciseDetailsModal exercise={value} />
                         </Stack>
                         <Divider />
@@ -39,6 +49,3 @@ export const ExerciseListItem = ({ items, checkedItems, handleToggle }) => {
         </List>
     )
 }
-
-
-//change equipment text for body weight only , provide better names 
