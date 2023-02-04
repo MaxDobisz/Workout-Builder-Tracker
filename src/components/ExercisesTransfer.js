@@ -15,10 +15,19 @@ function intersection(a, b) {
 export const ExercisesTransfer = () => {
     const [checked, setChecked] = useState([]);
     const [left, setLeft] = useState([]);
-    const [right, setRight] = useState([]);
+    const [day, setDay] = useState('monday');
+
+    const [monday, setMonday] = useState([]); /*  change for object reducer*/
+    const [tuesday, setTuesday] = useState([]);
+    const [wednesday, setWednesday] = useState([]);
+    const [thursday, setThursday] = useState([]);
+    const [friday, setFriday] = useState([]);
+    const [saturday, setSaturday] = useState([]);
+    const [sunday, setSunday] = useState([]);
+
+
     const { listOfExercises } = useContext(ExercisesContext);
     const leftChecked = intersection(checked, left);
-    const rightChecked = intersection(checked, right);
 
     useEffect(() => {
         if (listOfExercises && listOfExercises.length > 0) {
@@ -40,27 +49,37 @@ export const ExercisesTransfer = () => {
         setChecked(newChecked);
     };
 
-    const handleAllRight = () => {
-        setRight(right.concat(left));
-        setLeft([]);
-    };
-
     const handleCheckedRight = () => {
-        setRight(right.concat(leftChecked));
+        switch (day) {
+            case 'monday':
+                setMonday(monday.concat(leftChecked));
+                break;
+            case 'tuesday':
+                setTuesday(tuesday.concat(leftChecked));
+                break;
+            case 'wednesday':
+                setWednesday(wednesday.concat(leftChecked));
+                break;
+            case 'thursday':
+                setThursday(thursday.concat(leftChecked));
+                break;
+            case 'friday':
+                setFriday(friday.concat(leftChecked));
+                break;
+            case 'saturday':
+                setSaturday(saturday.concat(leftChecked));
+                break;
+            case 'sunday':
+                setSunday(sunday.concat(leftChecked));
+                break;
+            default:
+                console.log('zjebalo sie');
+        }
+
         setLeft(not(left, leftChecked));
         setChecked(not(checked, leftChecked));
     };
 
-    const handleCheckedLeft = () => {
-        setLeft(left.concat(rightChecked));
-        setRight(not(right, rightChecked));
-        setChecked(not(checked, rightChecked));
-    };
-
-    const handleAllLeft = () => {
-        setLeft(left.concat(right));
-        setRight([]);
-    };
 
     const customList = items => (
         <Stack sx={{ width: 400, height: 500, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center' }}>
@@ -68,6 +87,27 @@ export const ExercisesTransfer = () => {
             }
         </Stack >
     );
+
+    const showSelectedList = (day) => {
+        switch (day) {
+            case 'monday':
+                return customList(monday);
+            case 'tuesday':
+                return customList(tuesday);
+            case 'wednesday':
+                return customList(wednesday);
+            case 'thursday':
+                return customList(thursday);
+            case 'friday':
+                return customList(friday);
+            case 'saturday':
+                return customList(saturday);
+            case 'sunday':
+                return customList(sunday);
+            default:
+                console.log('zjebalo sie');
+        }
+    }
 
     return (
         <Grid container spacing={2} justifyContent="center" alignItems="center">
@@ -83,47 +123,18 @@ export const ExercisesTransfer = () => {
                         sx={{ my: 0.5 }}
                         variant="contained"
                         size="small"
-                        onClick={handleAllRight}
-                        disabled={left.length === 0}
-                        aria-label="move all right"
-                    >
-                        ≫
-                    </Button>
-                    <Button
-                        sx={{ my: 0.5 }}
-                        variant="contained"
-                        size="small"
                         onClick={handleCheckedRight}
                         disabled={leftChecked.length === 0}
                         aria-label="move selected right"
                     >
                         &gt;
                     </Button>
-                    <Button
-                        sx={{ my: 0.5 }}
-                        variant="contained"
-                        size="small"
-                        onClick={handleCheckedLeft}
-                        disabled={rightChecked.length === 0}
-                        aria-label="move selected left"
-                    >
-                        &lt;
-                    </Button>
-                    <Button
-                        sx={{ my: 0.5 }}
-                        variant="contained"
-                        size="small"
-                        onClick={handleAllLeft}
-                        disabled={right.length === 0}
-                        aria-label="move all left"
-                    >
-                        ≪
-                    </Button>
                 </Grid>
             </Grid>
             <Grid item> {/* list 2 */}
-                <DaysSelector />
-                {customList(right)}
+                <DaysSelector day={day} setDay={setDay} />
+                {showSelectedList(day)}
+                {/* {customList(right)} display list( list depends on selected day) , parameter === list data */}
             </Grid>
         </Grid>
     );

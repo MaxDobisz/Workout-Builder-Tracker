@@ -7,9 +7,8 @@ import { ExercisesContext } from '../context/context';
 
 export const ExerciseListItem = ({ items, checkedItems, handleToggle }) => {
     const { includeEquipment } = useContext(ExercisesContext)
-    const filteredExercisesBasedOnEquipmentAvailability = includeEquipment ? items : items.filter(exer => exer.equipment === 'body weight')
 
-    console.log(filteredExercisesBasedOnEquipmentAvailability)
+    const filteredExercisesBasedOnEquipmentAvailability = includeEquipment ? items : items.filter(exer => exer.equipment === 'body weight')
 
     return (
         <List sx={{ p: 0, width: '100%' }} dense component="div" role="list">
