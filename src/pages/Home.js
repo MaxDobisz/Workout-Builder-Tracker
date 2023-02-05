@@ -8,11 +8,11 @@ export const Home = () => {
     // const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
     return (
-        <Container sx={{ height: '90%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <Container sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
             <Box color='white' fontSize='h1.fontSize' fontWeight='700' textAlign='center'>
                 Workout tracker
             </Box>
-            <Box width='50%' color='white' fontSize='h4.fontSize' fontStyle='italic' textAlign='center'>
+            <Box width='50%' color='white' fontSize='h4.fontSize' fontStyle='italic' textAlign='center' margin='0 auto'>
                 "The pain you feel today is the strength you feel tomorrow."
             </Box>
         </Container >

@@ -30,7 +30,7 @@ export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <div style={{ height: '100vh', backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}> {/* styled component instead ? */}
+            <div style={{ minHeight: '100vh', backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}> {/* styled component instead ? */}
                 <BrowserRouter>
                     <Navbar />
                     <AppRoutes />
