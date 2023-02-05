@@ -20,7 +20,7 @@ export const BuilderPlanGenerator = () => {
                 'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
             }
         };
-        console.log(process.env.REACT_APP_EXERCISES_DB_KEY)
+
         const fetchData = async () => {
             try {
                 const { data } = await axios.request(options); /*data =  is array with exercises objects */
