@@ -11,17 +11,16 @@ export const BuilderPlanGenerator = () => {
     const [listOfExercises, setListOfExercises] = useState([]);
     const [includeEquipment, setIncludeEquipment] = useState(true);
 
-
     useEffect(() => {
         const options = {
             method: 'GET',
             url: `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${selectedTypeOfExercises}`,
             headers: {
-                'X-RapidAPI-Key': '123a2689d3msh20cb5bf8568be58p19439fjsn359b1af4dcc8',
+                'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISES_DB_KEY}`,
                 'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
             }
         };
-
+        console.log(process.env.REACT_APP_EXERCISES_DB_KEY)
         const fetchData = async () => {
             try {
                 const { data } = await axios.request(options); /*data =  is array with exercises objects */
