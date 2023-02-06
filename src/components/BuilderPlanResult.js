@@ -1,10 +1,14 @@
-import { Stack, Typography, Divider } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
+import uuid from 'react-uuid';
+import { Stack, Typography, Divider, Box, Button } from "@mui/material";
 import { useDaysContext } from "../context/daysContext";
 import { NumberSelector } from './NumberSelector';
-import uuid from 'react-uuid';
+
 
 export const BuilderPlanResult = () => {
     const { daysContext } = useDaysContext();
+    const navigate = useNavigate();
+    const handleButtonClick = () => navigate('/plans');
 
     return (
         <Stack gap='1rem'> {/* whole week wrapper */}
@@ -29,6 +33,11 @@ export const BuilderPlanResult = () => {
                 }
                 return null;
             })}
+            <Box>
+                <Button onClick={handleButtonClick} variant='contained' size="large">
+                    Save
+                </Button>
+            </Box>
         </Stack>
     )
 }

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { Container, Stack, Box } from "@mui/material";
+import { Container, Stack, Box, Button } from "@mui/material";
 import { ExercisesSelector } from "./ExercisesSelector";
 import { EquipmentSwitch } from "./EquipmentSwitch";
 import { ExercisesTransfer } from "./ExercisesTransfer";
 import { ExercisesContext } from '../context/context';
 
-export const BuilderPlanGenerator = () => {
+export const BuilderPlanGenerator = ({ setShowResult }) => {
     const [selectedTypeOfExercises, setSelectedTypeOfExercises] = useState('');
     const [listOfExercises, setListOfExercises] = useState([]);
     const [includeEquipment, setIncludeEquipment] = useState(true);
@@ -40,6 +40,12 @@ export const BuilderPlanGenerator = () => {
 
     }, [selectedTypeOfExercises]);
 
+    const handleButtonClick = () => {
+        //if step === 1 &&& days are not empty:
+        setShowResult(true)
+    }
+
+
     return (
         <ExercisesContext.Provider value={{ listOfExercises, setSelectedTypeOfExercises, includeEquipment, setIncludeEquipment }}>
             <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center' }} >
@@ -53,6 +59,11 @@ export const BuilderPlanGenerator = () => {
                     </Box>
                 </Stack>
             </Container>
+            <Box>
+                <Button onClick={handleButtonClick} variant='contained' size="large">
+                    NEXT
+                </Button>
+            </Box>
         </ExercisesContext.Provider>
     )
 }
