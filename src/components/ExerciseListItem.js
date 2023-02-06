@@ -8,17 +8,21 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ExerciseListItem = ({ items, checkedItems, handleToggle, handleRemoveListItem, right }) => {
     const { includeEquipment } = useContext(ExercisesContext);
+    const filterExercisesBasedOnEquipmentAvailability = () => {
 
-    const filteredExercisesBasedOnEquipmentAvailability = includeEquipment && !right ? items : items.filter(exer => exer.equipment === 'body weight');
+        if (!includeEquipment && !right) {
+            return items.filter(exer => exer.equipment === 'body weight')
+        }
+
+        return items;
+    }
+
+    const filteredExercises = filterExercisesBasedOnEquipmentAvailability();
 
     return (
         <List sx={{ p: 0, width: '100%' }} dense component="div" role="list">
 
-
-
-
-
-            {filteredExercisesBasedOnEquipmentAvailability.map((value) => {
+            {filteredExercises.map((value) => {
                 const labelId = `transfer-list-item-${value}-label`;
                 return (
                     <Box key={uuid()}>

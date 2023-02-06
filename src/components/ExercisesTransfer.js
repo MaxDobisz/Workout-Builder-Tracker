@@ -3,6 +3,7 @@ import { Box, Grid, Button, Stack } from '@mui/material';
 import { DaysSelector } from './DaysSelector';
 import { ExerciseListItem } from './ExerciseListItem';
 import { ExercisesContext } from '../context/context';
+import { useDaysContext } from '../context/daysContext';
 
 function not(a, b) {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -17,16 +18,23 @@ export const ExercisesTransfer = () => {
     const [left, setLeft] = useState([]);
     const [day, setDay] = useState('monday');
 
-    const [monday, setMonday] = useState([]); 
-    const [tuesday, setTuesday] = useState([]);
-    const [wednesday, setWednesday] = useState([]);
-    const [thursday, setThursday] = useState([]);
-    const [friday, setFriday] = useState([]);
-    const [saturday, setSaturday] = useState([]);
-    const [sunday, setSunday] = useState([]);
+    // const { monday, setMonday, tuesday, setTuesday, wednesday, setWednesday, thursday, setThursday, friday, setFriday, saturday, setSaturday, sunday, setSunday } = useDaysContext();
+
+    const { daysContext, setDaysContext } = useDaysContext();
+
+
+
+    // const [monday, setMonday] = useState([]);
+    // const [tuesday, setTuesday] = useState([]);
+    // const [wednesday, setWednesday] = useState([]);
+    // const [thursday, setThursday] = useState([]);
+    // const [friday, setFriday] = useState([]);
+    // const [saturday, setSaturday] = useState([]);
+    // const [sunday, setSunday] = useState([]);
 
 
     const { listOfExercises } = useContext(ExercisesContext);
+
     const leftChecked = intersection(checked, left);
 
     useEffect(() => {
@@ -52,25 +60,25 @@ export const ExercisesTransfer = () => {
     const handleCheckedRight = () => {
         switch (day) {
             case 'monday':
-                setMonday(monday.concat(leftChecked));
+                setDaysContext.setMonday(daysContext.monday.concat(leftChecked));
                 break;
             case 'tuesday':
-                setTuesday(tuesday.concat(leftChecked));
+                setDaysContext.setTuesday(daysContext.tuesday.concat(leftChecked));
                 break;
             case 'wednesday':
-                setWednesday(wednesday.concat(leftChecked));
+                setDaysContext.setWednesday(daysContext.wednesday.concat(leftChecked));
                 break;
             case 'thursday':
-                setThursday(thursday.concat(leftChecked));
+                setDaysContext.setThursday(daysContext.thursday.concat(leftChecked));
                 break;
             case 'friday':
-                setFriday(friday.concat(leftChecked));
+                setDaysContext.setFriday(daysContext.friday.concat(leftChecked));
                 break;
             case 'saturday':
-                setSaturday(saturday.concat(leftChecked));
+                setDaysContext.setSaturday(daysContext.saturday.concat(leftChecked));
                 break;
             case 'sunday':
-                setSunday(sunday.concat(leftChecked));
+                setDaysContext.setSunday(daysContext.sunday.concat(leftChecked));
                 break;
             default:
                 console.log('zjebalo sie');
@@ -83,25 +91,25 @@ export const ExercisesTransfer = () => {
     const handleRemoveListItem = (value) => {
         switch (day) {
             case 'monday':
-                setMonday(monday.filter(item => item !== value));
+                setDaysContext.setMonday(daysContext.monday.filter(item => item !== value));
                 break;
             case 'tuesday':
-                setTuesday(tuesday.filter(item => item !== value));
+                setDaysContext.setTuesday(daysContext.tuesday.filter(item => item !== value));
                 break;
             case 'wednesday':
-                setWednesday(wednesday.filter(item => item !== value));
+                setDaysContext.setWednesday(daysContext.wednesday.filter(item => item !== value));
                 break;
             case 'thursday':
-                setThursday(thursday.filter(item => item !== value));
+                setDaysContext.setThursday(daysContext.thursday.filter(item => item !== value));
                 break;
             case 'friday':
-                setFriday(friday.filter(item => item !== value));
+                setDaysContext.setFriday(daysContext.friday.filter(item => item !== value));
                 break;
             case 'saturday':
-                setSaturday(saturday.filter(item => item !== value));
+                setDaysContext.setSaturday(daysContext.saturday.filter(item => item !== value));
                 break;
             case 'sunday':
-                setSunday(sunday.filter(item => item !== value));
+                setDaysContext.setSunday(daysContext.sunday.filter(item => item !== value));
                 break;
             default:
                 console.log('error');
@@ -123,20 +131,20 @@ export const ExercisesTransfer = () => {
     const showSelectedList = (day) => {
         switch (day) {
             case 'monday':
-                return customList(monday, true);
+                return customList(daysContext.monday, true);
 
             case 'tuesday':
-                return customList(tuesday, true);
+                return customList(daysContext.tuesday, true);
             case 'wednesday':
-                return customList(wednesday, true);
+                return customList(daysContext.wednesday, true);
             case 'thursday':
-                return customList(thursday, true);
+                return customList(daysContext.thursday, true);
             case 'friday':
-                return customList(friday, true);
+                return customList(daysContext.friday, true);
             case 'saturday':
-                return customList(saturday, true);
+                return customList(daysContext.saturday, true);
             case 'sunday':
-                return customList(sunday, true);
+                return customList(daysContext.sunday, true);
             default:
                 console.log('error');
         }
