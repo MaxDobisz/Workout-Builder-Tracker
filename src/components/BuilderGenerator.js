@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { Container, Stack, Box, Button } from "@mui/material";
+import { Container, Stack, Box, Button, Snackbar, Slide } from "@mui/material";
 import { ExercisesSelector } from "./ExercisesSelector";
 import { EquipmentSwitch } from "./EquipmentSwitch";
 import { ExercisesTransfer } from "./ExercisesTransfer";
 import { ExercisesContext } from '../context/context';
+import { useDaysContext } from "../context/daysContext";
+import { DirectionSnackbar } from './SnackBar';
+
 
 export const BuilderGenerator = ({ setShowResult }) => {
+
     const [selectedTypeOfExercises, setSelectedTypeOfExercises] = useState('');
     const [listOfExercises, setListOfExercises] = useState([]);
     const [includeEquipment, setIncludeEquipment] = useState(true);
@@ -25,26 +29,17 @@ export const BuilderGenerator = ({ setShowResult }) => {
             try {
                 const { data } = await axios.request(options); /*data =  is array with exercises objects */
                 if (data && data.length > 0) {
-                    // console.log('fetch success')
                     setListOfExercises(data);
                 }
             } catch (error) {
-                // console.log('error')
             }
         }
 
         if (selectedTypeOfExercises) {
-            // console.log('Im calling API');
             fetchData()
         }
 
     }, [selectedTypeOfExercises]);
-
-    const handleButtonClick = () => {
-        //if step === 1 &&& days are not empty:
-        setShowResult(true)
-    }
-
 
     return (
         <ExercisesContext.Provider value={{ listOfExercises, setSelectedTypeOfExercises, includeEquipment, setIncludeEquipment }}>
@@ -60,9 +55,7 @@ export const BuilderGenerator = ({ setShowResult }) => {
                 </Stack>
             </Container>
             <Box>
-                <Button onClick={handleButtonClick} variant='contained' size="large">
-                    NEXT
-                </Button>
+                <DirectionSnackbar setShowResult={setShowResult} />
             </Box>
         </ExercisesContext.Provider>
     )

@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import uuid from "react-uuid";
 
 const DaysContext = createContext();
 
