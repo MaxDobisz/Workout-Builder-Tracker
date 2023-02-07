@@ -1,27 +1,32 @@
-import { useState } from 'react';
 import { Box, FormControl, NativeSelect } from '@mui/material';
 
+export const NumberSelector = ({ onChange, optionsNumber }) => {
+    const renderOptions = () => {
+        let options = [];
 
-export const NumberSelector = () => {
-    const [day, setDay] = useState('');
+        for (let i = 1; i <= optionsNumber; i++) {
+            options.push(<option value={i} key={i}>{i}</option>)
+        }
+
+        return options;
+    }
 
     const handleChange = (event) => {
-        setDay(event.target.value);
+        onChange(Number(event.target.value));
     };
+
 
     return (
         <Box backgroundColor='white' border='2px solid black'>
-            <FormControl fullWidth>
+            <FormControl fullWidth onChange={handleChange}>
                 <NativeSelect
-                    defaultValue={30}
+                    defaultValue={1}
                     inputProps={{
                         name: 'day',
                         id: 'uncontrolled-native',
                     }}
                 >
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
+                    {renderOptions()}
                 </NativeSelect>
             </FormControl>
         </Box>

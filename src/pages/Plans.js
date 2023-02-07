@@ -1,39 +1,18 @@
-import { Grid } from "@mui/material";
+import { useEffect } from "react";
+import { Stack } from "@mui/system";
 import { Plan } from "../components/Plan";
+import uuid from "react-uuid";
 
-export const Plans = () => {
+export const Plans = ({ plans }) => {
+    const plansFromLS = JSON.parse(localStorage.getItem('plans'))
+
     return (
-        <Grid container spacing={2} sx={{ width: '70%', margin: '0 auto' }}>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-            <Grid lg={2}>
-                <Plan />
-            </Grid>
-        </Grid >
+        <Stack direction='row' justifyContent='center' gap='1rem' >
+            {
+                plansFromLS.map(plan => {
+                    return <Plan {...plan} key={uuid()} />
+                })
+            }
+        </Stack >
     )
 }
