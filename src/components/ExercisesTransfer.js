@@ -120,8 +120,8 @@ export const ExercisesTransfer = () => {
     const customList = (items, right) => (
 
         // if items are from left render normal, otherwise render another
-        <Stack sx={{ width: 400, height: 500, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center' }}>
-            {items && items.length === 0 ? <Box> no exercises </Box> : <ExerciseListItem items={items} checkedItems={checked} handleToggle={handleToggle} handleRemoveListItem={handleRemoveListItem} right={right} />
+        <Stack sx={{ width: 400, height: 500, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center', position: 'relative' }}>
+            {items && items.length === 0 ? <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}> no exercises </Box> : <ExerciseListItem items={items} checkedItems={checked} handleToggle={handleToggle} handleRemoveListItem={handleRemoveListItem} right={right} />
             }
         </Stack >
     );
