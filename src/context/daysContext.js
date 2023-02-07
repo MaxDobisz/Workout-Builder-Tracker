@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import uuid from "react-uuid";
 
 const DaysContext = createContext();
 
@@ -13,20 +14,20 @@ export const DaysContextProvider = ({ children }) => {
     const [saturday, setSaturday] = useState([]);
     const [sunday, setSunday] = useState([]);
 
-    const daysContext = {
-        monday,
-        tuesday,
-        wednesday,
-        thursday,
-        friday,
-        saturday,
-        sunday
-    };
+    // const daysContext = {
+    //     monday,
+    //     tuesday,
+    //     wednesday,
+    //     thursday,
+    //     friday,
+    //     saturday,
+    //     sunday
+    // };
 
 
     const value = {
         daysContext: { monday, tuesday, wednesday, thursday, friday, saturday, sunday },
-        setDaysContext: { setMonday, setTuesday, setWednesday, setThursday, setFriday, setSaturday, setSunday }
+        setDaysContext: { setMonday, setTuesday, setWednesday, setThursday, setFriday, setSaturday, setSunday },
     }
 
     return (

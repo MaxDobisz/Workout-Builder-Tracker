@@ -34,7 +34,8 @@ export const BuilderResult = () => {
         //create a newPlan object with creation date
         const newPlan = {
             creationDate: new Date().toLocaleDateString(),
-            days: { ...daysOfTheWeekData }
+            days: { ...daysOfTheWeekData },
+            id: uuid()
         };
 
         const plans = getDataFromLocalStorage('plans', [])
