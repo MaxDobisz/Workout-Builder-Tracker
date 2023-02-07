@@ -1,14 +1,16 @@
-import { Typography, Stack } from "@mui/material";
+import { Typography, Stack, Box, Divider } from "@mui/material";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { WeekDetailsModal } from "./WeekDetailsModal";
 
-export const Plan = ({ creationDate, days, id, deletePlan }) => {
+export const Plan = ({ creationDate, days, id, deletePlan, itemNumber }) => {
     const handleIconOnClick = () => {
         deletePlan(id)
     }
 
     return (
-        <Stack alignItems='center' border='2px solid green' backgroundColor='white'>
+        <Stack alignItems='center' border='2px solid green' backgroundColor='white' p='1rem'>
+
+            <Box border='2px solid black' borderRadius='5px' p='5px'> {itemNumber}</Box>
             <Typography> Created: {creationDate}</Typography>
             <Typography> Days: {Object.keys(days).length}</Typography>
             <Stack direction='row' alignItems='center'>
