@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { Container, Stack, Box, Button, Snackbar, Slide } from "@mui/material";
+import { Container, Stack, Box } from "@mui/material";
 import { ExercisesSelector } from "./ExercisesSelector";
 import { EquipmentSwitch } from "./EquipmentSwitch";
 import { ExercisesTransfer } from "./ExercisesTransfer";
 import { ExercisesContext } from '../context/context';
-import { useDaysContext } from "../context/daysContext";
 import { DirectionSnackbar } from './SnackBar';
-
 
 export const BuilderGenerator = ({ setShowResult }) => {
 
     const [selectedTypeOfExercises, setSelectedTypeOfExercises] = useState('');
     const [listOfExercises, setListOfExercises] = useState([]);
     const [includeEquipment, setIncludeEquipment] = useState(true);
+    const [linearProgress, setLinearProgress] = useState(false)
 
     useEffect(() => {
         const options = {
@@ -26,12 +25,16 @@ export const BuilderGenerator = ({ setShowResult }) => {
         };
 
         const fetchData = async () => {
+            setLinearProgress(true)
             try {
                 const { data } = await axios.request(options); /*data =  is array with exercises objects */
                 if (data && data.length > 0) {
                     setListOfExercises(data);
+                    setLinearProgress(false)
                 }
             } catch (error) {
+                setLinearProgress(false)
+                //and show errror
             }
         }
 
@@ -42,7 +45,7 @@ export const BuilderGenerator = ({ setShowResult }) => {
     }, [selectedTypeOfExercises]);
 
     return (
-        <ExercisesContext.Provider value={{ listOfExercises, setSelectedTypeOfExercises, includeEquipment, setIncludeEquipment }}>
+        <ExercisesContext.Provider value={{ listOfExercises, setSelectedTypeOfExercises, includeEquipment, setIncludeEquipment, linearProgress }}>
             <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center' }} >
                 <Stack spacing={3}>
                     <Box display='flex' alignItems='center' justifyContent='center' gap='1rem'>{/*  wrapper for inputs ( exercises selector / equipment swich) */}
