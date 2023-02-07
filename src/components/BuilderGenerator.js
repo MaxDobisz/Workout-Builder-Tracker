@@ -6,7 +6,7 @@ import { EquipmentSwitch } from "./EquipmentSwitch";
 import { ExercisesTransfer } from "./ExercisesTransfer";
 import { ExercisesContext } from '../context/context';
 
-export const BuilderPlanGenerator = ({ setShowResult }) => {
+export const BuilderGenerator = ({ setShowResult }) => {
     const [selectedTypeOfExercises, setSelectedTypeOfExercises] = useState('');
     const [listOfExercises, setListOfExercises] = useState([]);
     const [includeEquipment, setIncludeEquipment] = useState(true);

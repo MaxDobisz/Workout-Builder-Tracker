@@ -3,12 +3,27 @@ import uuid from 'react-uuid';
 import { Stack, Typography, Divider, Box, Button } from "@mui/material";
 import { useDaysContext } from "../context/daysContext";
 import { NumberSelector } from './NumberSelector';
+import { getDataFromLocalStorage } from '../utils/getDataFromLocalStorage';
 
-
-export const BuilderPlanResult = () => {
+export const BuilderResult = () => {
     const { daysContext } = useDaysContext();
     const navigate = useNavigate();
-    const handleButtonClick = () => navigate('/plans');
+
+    const handleButtonClick = () => {
+        const plans = getDataFromLocalStorage('plans', [])
+        const newPlan = {
+            creationDate: new Date().toLocaleDateString(),
+            days: { ...daysContext }
+        };
+        plans.push(newPlan);
+        localStorage.setItem('plans', JSON.stringify(plans));
+        navigate('/plans');
+    }
+
+
+
+
+
 
     return (
         <Stack gap='1rem'> {/* whole week wrapper */}
@@ -25,7 +40,7 @@ export const BuilderPlanResult = () => {
                                         sets<NumberSelector />
                                         reps<NumberSelector />
                                     </Stack>
-                                </Stack> 
+                                </Stack>
                             )
 
                         })}
