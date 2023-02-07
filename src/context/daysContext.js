@@ -13,6 +13,17 @@ export const DaysContextProvider = ({ children }) => {
     const [saturday, setSaturday] = useState([]);
     const [sunday, setSunday] = useState([]);
 
+    const daysContext = {
+        monday,
+        tuesday,
+        wednesday,
+        thursday,
+        friday,
+        saturday,
+        sunday
+    };
+
+
     const value = {
         daysContext: { monday, tuesday, wednesday, thursday, friday, saturday, sunday },
         setDaysContext: { setMonday, setTuesday, setWednesday, setThursday, setFriday, setSaturday, setSunday }
