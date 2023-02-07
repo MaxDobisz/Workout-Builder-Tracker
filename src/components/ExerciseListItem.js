@@ -1,5 +1,5 @@
 import uuid from 'react-uuid';
-import { List, ListItem, ListItemIcon, ListItemText, Checkbox, Stack, Divider, Icon, Button } from '@mui/material';
+import { List, ListItem, ListItemIcon, ListItemText, Checkbox, Stack, Divider, Icon, Button, LinearProgress } from '@mui/material';
 import { ExerciseDetailsModal } from './ExerciseDetailsModal';
 import { Box } from '@mui/material';
 import { useContext } from 'react';
@@ -7,7 +7,8 @@ import { ExercisesContext } from '../context/context';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ExerciseListItem = ({ items, checkedItems, handleToggle, handleRemoveListItem, right }) => {
-    const { includeEquipment } = useContext(ExercisesContext);
+
+    const { includeEquipment, linearProgress } = useContext(ExercisesContext);
     const filterExercisesBasedOnEquipmentAvailability = () => {
 
         if (!includeEquipment && !right) {
@@ -20,7 +21,11 @@ export const ExerciseListItem = ({ items, checkedItems, handleToggle, handleRemo
     const filteredExercises = filterExercisesBasedOnEquipmentAvailability();
 
     return (
-        <List sx={{ p: 0, width: '100%' }} dense component="div" role="list">
+        <>
+            {linearProgress && <Box sx={{ width: '400px', m: '5px' }}>
+                {<LinearProgress />}
+            </Box>}
+            {filteredExercises && <List sx={{ p: 0, width: '100%' }} dense component="div" role="list">
 
             {filteredExercises.map((value) => {
                 const labelId = `transfer-list-item-${value}-label`;
@@ -55,6 +60,7 @@ export const ExerciseListItem = ({ items, checkedItems, handleToggle, handleRemo
                     </Box>
                 );
             })}
-        </List>
+            </List>}
+        </>
     )
 }

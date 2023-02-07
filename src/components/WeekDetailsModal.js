@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Box, Stack, Modal, Fade, Button, Typography, LinearProgress, Backdrop } from '@mui/material';
+import { Stack, Modal, Fade, Button, Typography, Backdrop } from '@mui/material';
 import uuid from 'react-uuid';
-
 
 const style = {
     position: 'absolute',
@@ -19,7 +18,6 @@ export const WeekDetailsModal = ({ daysData }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const [imageLoading, setImageLoading] = useState(true);
 
     return (
         <div>

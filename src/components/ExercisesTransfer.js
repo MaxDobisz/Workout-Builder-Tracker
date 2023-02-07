@@ -17,24 +17,8 @@ export const ExercisesTransfer = () => {
     const [checked, setChecked] = useState([]);
     const [left, setLeft] = useState([]);
     const [day, setDay] = useState('monday');
-
-    // const { monday, setMonday, tuesday, setTuesday, wednesday, setWednesday, thursday, setThursday, friday, setFriday, saturday, setSaturday, sunday, setSunday } = useDaysContext();
-
     const { daysContext, setDaysContext } = useDaysContext();
-
-
-
-    // const [monday, setMonday] = useState([]);
-    // const [tuesday, setTuesday] = useState([]);
-    // const [wednesday, setWednesday] = useState([]);
-    // const [thursday, setThursday] = useState([]);
-    // const [friday, setFriday] = useState([]);
-    // const [saturday, setSaturday] = useState([]);
-    // const [sunday, setSunday] = useState([]);
-
-
     const { listOfExercises } = useContext(ExercisesContext);
-
     const leftChecked = intersection(checked, left);
 
     useEffect(() => {
@@ -116,17 +100,12 @@ export const ExercisesTransfer = () => {
         }
     }
 
-
     const customList = (items, right) => (
-
-        // if items are from left render normal, otherwise render another
-        <Stack sx={{ width: 400, height: 500, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center', position: 'relative' }}>
+        <Stack sx={{ width: 450, height: 350, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center', position: 'relative' }}>
             {items && items.length === 0 ? <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}> no exercises </Box> : <ExerciseListItem items={items} checkedItems={checked} handleToggle={handleToggle} handleRemoveListItem={handleRemoveListItem} right={right} />
             }
         </Stack >
     );
-
-
 
     const showSelectedList = (day) => {
         switch (day) {
