@@ -3,14 +3,18 @@ import LooksOneOutlinedIcon from '@mui/icons-material/LooksOneOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { WeekDetailsModal } from "./WeekDetailsModal";
 
-export const Plan = ({ creationDate, days }) => {
+export const Plan = ({ creationDate, days, id, deletePlan }) => {
     const handleButtonOnClick = () => {
         console.log('show details')
     }
 
-    const handleIconOnClick = () => {
-        console.log('delete item')
+    const handleIconOnClick = (e) => {
+        deletePlan(id)
+        // const plansLS = localStorage.getItem('plans')
+        // const filteredPlanLS = plansLS.filter()
     }
+
+
 
     return (
         <Stack alignItems='center' border='2px solid green' backgroundColor='white' width='20%'>
