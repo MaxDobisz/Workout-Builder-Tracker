@@ -23,7 +23,7 @@ const theme = createTheme({
         khaki: "#BDB098ff",
         silver: "#B1BFC3",
         darkBlue: "#0F4273"
-    }
+    },
 });
 
 export const App = () => {
