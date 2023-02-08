@@ -17,9 +17,9 @@ export const NumberSelector = ({ onChange, optionsNumber }) => {
 
 
     return (
-        <Box backgroundColor='white' border='2px solid black'>
+        <Box backgroundColor='white' >
             <FormControl fullWidth onChange={handleChange}>
-                <NativeSelect
+                <NativeSelect 
                     defaultValue={1}
                     inputProps={{
                         name: 'day',

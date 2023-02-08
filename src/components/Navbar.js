@@ -27,7 +27,7 @@ export const Navbar = () => {
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
                         >
-                            <MenuIcon sx={{ color: 'white', fontSize: '3rem', mt: '2rem' }} />
+                            <MenuIcon sx={{ color: 'white', fontSize: '3rem', mt: '5px' }} />
                         </IconButton>
                         <Menu
                             id="menu-appbar"
