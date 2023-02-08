@@ -27,7 +27,7 @@ export const News = () => {
         const fetchData = async () => {
             setLinearProgress(true)
             try {
-                const { data } = await axios.request(options); /*data =  is array with exercises objects */
+                const { data } = await axios.request(options);
                 if (data && data.value && data.value.length > 0) {
                     setListOfArticles(data.value);
                     setLinearProgress(false)
