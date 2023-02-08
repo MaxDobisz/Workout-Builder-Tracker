@@ -4,7 +4,7 @@ import { WeekDetailsModal } from "./WeekDetailsModal";
 
 export const Plan = ({ creationDate, days, id, deletePlan, itemNumber }) => {
     const handleIconOnClick = () => {
-        deletePlan(id)
+        deletePlan(id);
     }
 
     return (
