@@ -3,7 +3,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Stack, Box } from '@mui/system';
+import { Stack } from '@mui/system';
 import { NumberSelector } from './NumberSelector';
 
 export const PlanAccordion = ({ plans, plan }) => {
@@ -50,11 +50,7 @@ export const PlanAccordion = ({ plans, plan }) => {
                         </Accordion>
                     )
                 })}
-
-
             </Stack>
-
-
         </Stack>
     );
 }
