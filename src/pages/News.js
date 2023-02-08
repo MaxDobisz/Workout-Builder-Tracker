@@ -19,7 +19,7 @@ export const News = () => {
                 toPublishedDate: 'null'
             },
             headers: {
-                // 'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISES_DB_KEY}`,
+                'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISES_DB_KEY}`,
                 'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
             }
         };
