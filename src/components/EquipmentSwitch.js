@@ -1,55 +1,103 @@
-import { FormGroup, Switch, styled, FormControlLabel } from '@mui/material';
+import clsx from 'clsx';
+import { styled } from '@mui/system';
+import { useSwitch } from '@mui/base/SwitchUnstyled';
 import { useContext } from 'react';
 import { ExercisesContext } from '../context/context';
+import { FormGroup, FormControlLabel } from '@mui/material';
 
-const Android12Switch = styled(Switch)(({ theme }) => ({
-    padding: 8,
-    '.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track': {
-        backgroundColor: 'green',
-        opacity: 1
-    },
-    '& .MuiSwitch-track': {
-        backgroundColor: 'green',
-        opacity: 1,
-        '&:before, &:after': {
-            content: '""',
-            position: 'absolute',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            width: 16,
-            height: 16,
-        },
-        '&:before': {
-            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24"><path fill="${encodeURIComponent(
-                theme.palette.getContrastText(theme.palette.primary.main),
-            )}" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"/></svg>')`,
-            left: 12,
+const blue = {
+    500: '#007FFF',
+};
 
-        },
-        '&:after': {
-            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24"><path fill="${encodeURIComponent(
-                theme.palette.getContrastText(theme.palette.primary.main),
-            )}" d="M19,13H5V11H19V13Z" /></svg>')`,
-            right: 12,
+const grey = {
+    400: '#BFC7CF',
+    500: '#AAB4BE',
+    600: '#6F7E8C',
+};
 
-        },
-    },
-    '& .MuiSwitch-thumb': {
-        backgroundColor: 'white',
-        boxShadow: 'none',
-        width: 16,
-        height: 16,
-        margin: 2,
-    },
-}));
+const BasicSwitchRoot = styled('span')(
+    ({ theme }) => `
+    font-size: 0;
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 16px;
+    background: ${theme.palette.mode === 'dark' ? grey[600] : grey[400]};
 
+    &.Switch-disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    &.Switch-checked {
+        background: ${blue[500]};
+    }
+    `,
+);
+
+const BasicSwitchInput = styled('input')`
+    cursor: inherit;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    margin: 0;
+`;
+
+const BasicSwitchThumb = styled('span')`
+    display: block;
+    width: 16px;
+    height: 16px;
+    top: 4px;
+    left: 4px;
+    border-radius: 16px;
+    background-color: #fff;
+    position: relative;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 120ms;
+
+    &.Switch-focusVisible {
+        background-color: ${grey[500]};
+        box-shadow: 0 0 1px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    &.Switch-checked {
+        left: 20px;
+        top: 4px;
+        background-color: '#fff';
+    }
+`;
+
+function BasicSwitch(props) {
+    const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
+
+    const stateClasses = {
+        'Switch-checked': checked,
+        'Switch-disabled': disabled,
+        'Switch-focusVisible': focusVisible,
+    };
+
+    return (
+        <BasicSwitchRoot className={clsx(stateClasses)}>
+            <BasicSwitchThumb className={clsx(stateClasses)} />
+            <BasicSwitchInput {...getInputProps()} aria-label="Demo switch" />
+        </BasicSwitchRoot>
+    );
+}
 
 export const EquipmentSwitch = () => {
     const { setIncludeEquipment, includeEquipment } = useContext(ExercisesContext);
 
     return (
         <FormGroup onChange={() => { setIncludeEquipment(!includeEquipment) }}>
-            <FormControlLabel control={<Android12Switch defaultChecked />} label="Equipment" sx={{ color: 'white' }} />
+            <FormControlLabel control={<BasicSwitch defaultChecked />} label="Equipment" sx={{ color: 'white' }} />
         </FormGroup>
     );
 }

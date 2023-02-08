@@ -7,7 +7,7 @@ export const DaysSelector = ({ day, setDay }) => {
     };
 
     return (
-        <Box minWidth={120} backgroundColor='white' fontWeight='700' border='2px solid black' p='.5rem' >
+        <Box minWidth={120} backgroundColor='white' fontWeight='700' border='2px solid black' p='.5rem' borderRadius='5px 5px 0 0'  >
             <FormControl fullWidth onChange={handleChange}>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" >
                     Day of the week

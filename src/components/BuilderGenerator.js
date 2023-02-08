@@ -8,7 +8,6 @@ import { ExercisesContext } from '../context/context';
 import { DirectionSnackbar } from './SnackBar';
 
 export const BuilderGenerator = ({ setShowResult }) => {
-
     const [selectedTypeOfExercises, setSelectedTypeOfExercises] = useState('');
     const [listOfExercises, setListOfExercises] = useState([]);
     const [includeEquipment, setIncludeEquipment] = useState(true);
@@ -48,16 +47,16 @@ export const BuilderGenerator = ({ setShowResult }) => {
         <ExercisesContext.Provider value={{ listOfExercises, setSelectedTypeOfExercises, includeEquipment, setIncludeEquipment, linearProgress }}>
             <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center' }} >
                 <Stack spacing={3}>
-                    <Box display='flex' alignItems='center' justifyContent='center' gap='1rem'>{/*  wrapper for inputs ( exercises selector / equipment swich) */}
+                    <Box display='flex' flexWrap='wrap' alignItems='center' justifyContent='center' gap='1rem'>
                         <ExercisesSelector />
                         <EquipmentSwitch />
                     </Box>
-                    <Box display='flex' alignItems='center' gap='1rem'> {/* wrapper for transferList */}
+                    <Box display='flex' alignItems='center' gap='1rem' justifyContent='center'>
                         <ExercisesTransfer />
                     </Box>
                 </Stack>
             </Container>
-            <Box>
+            <Box m='2rem'>
                 <DirectionSnackbar setShowResult={setShowResult} />
             </Box>
         </ExercisesContext.Provider>
