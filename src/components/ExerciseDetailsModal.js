@@ -3,15 +3,16 @@ import { Box, Stack, Modal, Fade, Button, Typography, LinearProgress, Backdrop }
 
 
 const style = {
+    borderRadius: '20px',
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    maxWidth: '40%',
+    maxWidth: '500px',
     bgcolor: 'white',
     border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    p: '1rem',
 };
 
 export const ExerciseDetailsModal = ({ exercise }) => {
@@ -21,7 +22,7 @@ export const ExerciseDetailsModal = ({ exercise }) => {
     const [imageLoading, setImageLoading] = useState(true);
 
     return (
-        <div>
+        <div >
             <Button onClick={handleOpen}>Details</Button>
             <Modal
                 aria-labelledby="transition-modal-title"
@@ -37,23 +38,24 @@ export const ExerciseDetailsModal = ({ exercise }) => {
                 <Fade in={open}>
                     <Box sx={style}>
                         <Stack alignItems='center'>
-                            <img onLoad={() => setImageLoading(false)} src={exercise.gifUrl} alt={exercise.name} width='360' height='360' />
-                            <Box sx={{ width: '360px', height: '1rem', mb: '1rem' }}>
+                            <img onLoad={() => setImageLoading(false)} src={exercise.gifUrl} alt={exercise.name} width='300px' height='300px' />
+                            <Box sx={{ width: '100%', height: '1rem', mb: '1rem' }}>
                                 {imageLoading && <LinearProgress />}
                             </Box>
                         </Stack>
                         <hr style={{ margin: 0 }} />
-                        <Typography id="transition-modal-title" variant="h4" variantMapping={{ h4: 'h2' }} align='center'>
+                        <Typography id="transition-modal-title" fontWeight='500' align='center'>
                             {exercise.name.toUpperCase()}
                         </Typography>
                         <hr style={{ margin: 0 }} />
-                        <Typography id="transition-modal-description" variant="subtitle1" variantMapping={{ subtitle1: 'h3' }} sx={{ mt: 2 }}>
+
+                        <Typography id="transition-modal-description" variant="subtitle1" >
                             {`Body part: ${exercise.bodyPart}`}
                         </Typography>
-                        <Typography id="transition-modal-description" variant="subtitle1" variantMapping={{ subtitle1: 'h3' }} sx={{ mt: 2 }}>
+                        <Typography id="transition-modal-description" variant="subtitle1">
                             {`Target muscle: ${exercise.target}`}
                         </Typography>
-                        <Typography id="transition-modal-description" variant="subtitle1" variantMapping={{ subtitle1: 'h3' }} sx={{ mt: 2 }}>
+                        <Typography id="transition-modal-description" variant="subtitle1" >
                             {`Equipment: ${exercise.equipment}`}
                         </Typography>
                     </Box>

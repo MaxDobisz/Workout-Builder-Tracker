@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Box, Grid, Button, Stack } from '@mui/material';
+import { Box, Grid, Button, Stack, createTheme } from '@mui/material';
 import { DaysSelector } from './DaysSelector';
 import { ExerciseListItem } from './ExerciseListItem';
 import { ExercisesContext } from '../context/context';
@@ -101,7 +101,7 @@ export const ExercisesTransfer = () => {
     }
 
     const customList = (items, right) => (
-        <Stack sx={{ width: 450, height: 350, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center', position: 'relative' }}>
+        <Stack sx={{ width: { xs: '320px', sm: '450px' }, height: 250, overflow: 'auto', bgcolor: 'white', border: '2px solid black', borderTop: 'none', alignItems: 'center', position: 'relative', borderRadius: '0 0 5px 5px' }}>
             {items && items.length === 0 ? <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}> no exercises </Box> : <ExerciseListItem items={items} checkedItems={checked} handleToggle={handleToggle} handleRemoveListItem={handleRemoveListItem} right={right} />
             }
         </Stack >
@@ -130,17 +130,16 @@ export const ExercisesTransfer = () => {
     }
 
     return (
-        <Grid container spacing={2} justifyContent="center" alignItems="center">
-            <Grid item>{/* list 1 */}
-                <Box display='flex' justifyContent='center' alignItems='center' sx={{ height: '4rem', backgroundColor: 'white', textAlign: 'center', fontWeight: '700', border: '2px solid black' }}>
+        <Stack alignItems='center' direction={{ mdl: 'row' }}>
+            <Box  >{/* list 1 */}
+                <Box display='flex' justifyContent='center' alignItems='center' sx={{ height: '68px', backgroundColor: 'white', textAlign: 'center', fontWeight: '700', border: '2px solid black', borderRadius: '5px 5px 0 0' }}>
                     EXERCISES
                 </Box>
                 {customList(left, false)}
-            </Grid>
-            <Grid item> {/* buttons */}
-                <Grid container direction="column" alignItems="center">
+            </Box>
+            <Box display='flex' alignItems='center' justifyContent='center'>
                     <Button
-                        sx={{ my: 0.5 }}
+                    sx={{ my: 0.5, fontSize: '1.5rem', height: 'max-content', border: '1px solid silver' }}
                         variant="contained"
                         size="small"
                         onClick={handleCheckedRight}
@@ -148,13 +147,12 @@ export const ExercisesTransfer = () => {
                         aria-label="move selected right"
                     >
                         &gt;
-                    </Button>
-                </Grid>
-            </Grid>
-            <Grid item> {/* list 2 */}
+                </Button>
+            </Box>
+            <Box > {/* list 2 */}
                 <DaysSelector day={day} setDay={setDay} />
                 {showSelectedList(day)}
-            </Grid>
-        </Grid>
+            </Box>
+        </Stack >
     );
 }

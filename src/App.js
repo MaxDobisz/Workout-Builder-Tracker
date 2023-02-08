@@ -24,6 +24,17 @@ const theme = createTheme({
         silver: "#B1BFC3",
         darkBlue: "#0F4273"
     },
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 500,
+            mds: 700,
+            md: 900,
+            mdl: 1000,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
 });
 
 export const App = () => {
