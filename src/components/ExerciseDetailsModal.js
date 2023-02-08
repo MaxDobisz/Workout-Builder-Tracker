@@ -3,11 +3,12 @@ import { Box, Stack, Modal, Fade, Button, Typography, LinearProgress, Backdrop }
 
 
 const style = {
+
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 'max-content',
+    maxWidth: '40%',
     bgcolor: 'white',
     border: '2px solid #000',
     boxShadow: 24,
