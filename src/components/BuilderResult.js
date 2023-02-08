@@ -52,7 +52,7 @@ export const BuilderResult = () => {
                         {exercises.map(exercise => {
                             return (
                                 <Stack direction={{ mds: 'row' }} alignItems='center' justifyContent='space-between' gap={{ mds: '2rem' }} key={uuid()}>
-                                    <Typography textAlign={'left'}>{capitalizeStringFirstLetter(exercise.name)}</Typography>
+                                    <Typography /* textAlign={'left'} */>{capitalizeStringFirstLetter(exercise.name)}</Typography>
                                     <Stack direction='row' alignItems='center' gap='1rem'>
                                         sets:<NumberSelector onChange={(value) => {
                                             daysOfTheWeekData[day].map(item => {

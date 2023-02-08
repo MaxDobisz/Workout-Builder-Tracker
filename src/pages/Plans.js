@@ -3,14 +3,11 @@ import { Box, Container } from "@mui/system";
 import { PlansList } from "../components/PlansList";
 
 export const Plans = () => {
-    const [plans, setPlans] = useState(JSON.parse(localStorage.getItem('plans')))
-    const deletePlan = (id) => {
-        //remove plan
+    const [plans, setPlans] = useState(JSON.parse(localStorage.getItem('plans')));
+    const deletePlan = id => {
         const updatedPlans = plans.filter(item => item.id !== id);
-        //update local storage
         localStorage.setItem('plans', JSON.stringify(updatedPlans));
-        //update compnent's plans
-        setPlans(updatedPlans)
+        setPlans(updatedPlans);
     }
 
     return (

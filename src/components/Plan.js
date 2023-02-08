@@ -1,4 +1,4 @@
-import { Typography, Stack, Box } from "@mui/material";
+import { Typography, Stack, Box, Tooltip, IconButton } from "@mui/material";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { WeekDetailsModal } from "./WeekDetailsModal";
 
@@ -8,13 +8,17 @@ export const Plan = ({ creationDate, days, id, deletePlan, itemNumber }) => {
     }
 
     return (
-        <Stack alignItems='center' border='2px solid green' backgroundColor='white' p='1rem'>
-            <Box border='2px solid black' borderRadius='5px' p='5px'> {itemNumber}</Box>
+        <Stack alignItems='center' border='2px solid black' backgroundColor='white' p='1rem' borderRadius='5px'>
+            <Box fontWeight='700' width={'1rem'} height={'1rem'} backgroundColor='black' color='white' display='flex' justifyContent={'center'} alignItems='center' borderRadius={'50%'} p='1rem'>{itemNumber}</Box>
             <Typography> Created: {creationDate}</Typography>
             <Typography> Days: {Object.keys(days).length}</Typography>
             <Stack direction='row' alignItems='center'>
                 <WeekDetailsModal daysData={days} />
-                <DeleteOutlineIcon onClick={handleIconOnClick} sx={{ border: '2px solid green', backgroundColor: 'white', margin: '0 auto' }} />
+                <Tooltip title="Delete">
+                    <IconButton>
+                        <DeleteOutlineIcon onClick={handleIconOnClick} sx={{ margin: '0 auto' }} />
+                    </IconButton>
+                </Tooltip>
             </Stack>
         </Stack>
     )

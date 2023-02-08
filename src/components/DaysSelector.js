@@ -1,6 +1,6 @@
 import { Box, NativeSelect, InputLabel, FormControl } from '@mui/material';
 
-export const DaysSelector = ({ day, setDay }) => {
+export const DaysSelector = ({ setDay }) => {
 
     const handleChange = (event) => {
         setDay(event.target.value);
@@ -12,13 +12,7 @@ export const DaysSelector = ({ day, setDay }) => {
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" >
                     Day of the week
                 </InputLabel>
-                <NativeSelect sx={{ fontWeight: '700' }}
-                    // defaultValue={30}
-                    inputProps={{
-                        name: 'day',
-                        id: 'uncontrolled-native',
-                    }}
-                >
+                <NativeSelect sx={{ fontWeight: '700' }} inputProps={{ name: 'day', id: 'uncontrolled-native' }}>
                     <option value={'monday'} style={{ textAlign: 'center' }}>Monday</option>
                     <option value={'tuesday'} style={{ textAlign: 'center' }}>Tuesday</option>
                     <option value={'wednesday'} style={{ textAlign: 'center' }}>Wednesday</option>
