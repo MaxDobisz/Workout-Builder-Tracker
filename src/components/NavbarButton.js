@@ -10,4 +10,6 @@ export const NavbarButton = styled(Button)(({ theme }) => ({
     '&:hover': {
         backgroundColor: theme.palette.darkBlue,
     },
+    boxShadow: 'rgba(255, 255, 255, 0.25) 0px 13px 27px -5px, rgba(255, 255, 255, 0.3) 0px 8px 16px -8px'
 }));
+

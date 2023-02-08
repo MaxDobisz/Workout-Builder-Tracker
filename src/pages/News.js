@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Box, Stack, LinearProgress, Typography, Container, Divider } from "@mui/material";
+import { Stack, LinearProgress, Typography, Container } from "@mui/material";
 
 export const News = () => {
     const [listOfArticles, setListOfArticles] = useState([]);
@@ -19,7 +19,7 @@ export const News = () => {
                 toPublishedDate: 'null'
             },
             headers: {
-                'X-RapidAPI-Key': '123a2689d3msh20cb5bf8568be58p19439fjsn359b1af4dcc8',
+                'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISES_DB_KEY}`,
                 'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
             }
         };
@@ -27,7 +27,7 @@ export const News = () => {
         const fetchData = async () => {
             setLinearProgress(true)
             try {
-                const { data } = await axios.request(options); /*data =  is array with exercises objects */
+                const { data } = await axios.request(options);
                 if (data && data.value && data.value.length > 0) {
                     setListOfArticles(data.value);
                     setLinearProgress(false)
