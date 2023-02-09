@@ -17,7 +17,6 @@ export const ExerciseListItem = ({ items, checkedItems, handleToggle, handleRemo
 
         return items;
     }
-
     const filteredExercises = filterExercisesBasedOnEquipmentAvailability();
 
     return (
@@ -25,15 +24,12 @@ export const ExerciseListItem = ({ items, checkedItems, handleToggle, handleRemo
             {linearProgress && <Box sx={{ width: '400px', m: '5px' }}>
                 {<LinearProgress />}
             </Box>}
-            {filteredExercises && <List sx={{ p: 0, width: '100%' }} dense component="div" role="list">
-
-            {filteredExercises.map((value) => {
+            {filteredExercises && <List sx={{ p: 0, width: '100%' }} dense component="div" role="list"> {filteredExercises.map((value) => {
                 const labelId = `transfer-list-item-${value}-label`;
                 return (
                     <Box key={uuid()}>
                         <Stack flexDirection='row' alignItems='center'> {/* 1 exercise on the list */}
                             {right ?
-
                                 <ListItem sx={{ p: 0 }} role="listitem"  >
                                     <ListItemIcon sx={{ bgColor: 'black' }} >
                                         <Button onClick={() => { handleRemoveListItem(value) }}><Icon><DeleteIcon /></Icon></Button>

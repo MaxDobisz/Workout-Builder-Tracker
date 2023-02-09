@@ -28,7 +28,7 @@ export const BuilderGenerator = ({ setShowResult }) => {
             setError();
             setLinearProgress(true)
             try {
-                const { data } = await axios.request(options); /*data =  is array with exercises objects */
+                const { data } = await axios.request(options); 
                 if (data && data.length > 0) {
                     setListOfExercises(data);
                     setLinearProgress(false)

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Box, Grid, Button, Stack, createTheme } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 import { DaysSelector } from './DaysSelector';
 import { ExerciseListItem } from './ExerciseListItem';
 import { ExercisesContext } from '../context/context';
@@ -111,7 +111,6 @@ export const ExercisesTransfer = () => {
         switch (day) {
             case 'monday':
                 return customList(daysContext.monday, true);
-
             case 'tuesday':
                 return customList(daysContext.tuesday, true);
             case 'wednesday':

@@ -1,7 +1,6 @@
 import { Box, NativeSelect, InputLabel, FormControl } from '@mui/material';
 
 export const DaysSelector = ({ setDay }) => {
-
     const handleChange = (event) => {
         setDay(event.target.value);
     };

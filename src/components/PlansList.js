@@ -12,7 +12,6 @@ export const PlansList = ({ plans, deletePlan }) => {
         <Stack alignItems='center' gap='1rem'>
             <Stack direction='row' gap='1rem' justifyContent='center' flexWrap='wrap'>
                 {plans.map(plan => <Plan {...plan} key={uuid()} deletePlan={deletePlan} itemNumber={plans.indexOf(plan) + 1} />)}
-
             </Stack >
             <Button onClick={handlButtonClick} variant="contained" sx={{ width: 'max-content', border: '2px solid silver', borderRadius: '10px' }}>Go to tracker</Button>
         </Stack>

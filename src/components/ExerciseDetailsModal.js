@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Box, Stack, Modal, Fade, Button, Typography, LinearProgress, Backdrop } from '@mui/material';
 
-
 const style = {
     borderRadius: '20px',
     position: 'absolute',
@@ -22,7 +21,7 @@ export const ExerciseDetailsModal = ({ exercise }) => {
     const [imageLoading, setImageLoading] = useState(true);
 
     return (
-        <div >
+        <div>
             <Button onClick={handleOpen}>Details</Button>
             <Modal
                 aria-labelledby="transition-modal-title"
@@ -48,7 +47,6 @@ export const ExerciseDetailsModal = ({ exercise }) => {
                             {exercise.name.toUpperCase()}
                         </Typography>
                         <hr style={{ margin: 0 }} />
-
                         <Typography id="transition-modal-description" variant="subtitle1" >
                             {`Body part: ${exercise.bodyPart}`}
                         </Typography>
