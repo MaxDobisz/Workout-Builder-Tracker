@@ -11,7 +11,8 @@ export const BuilderGenerator = ({ setShowResult }) => {
     const [selectedTypeOfExercises, setSelectedTypeOfExercises] = useState('');
     const [listOfExercises, setListOfExercises] = useState([]);
     const [includeEquipment, setIncludeEquipment] = useState(true);
-    const [linearProgress, setLinearProgress] = useState(false)
+    const [linearProgress, setLinearProgress] = useState(false);
+    const [error, setError] = useState();
 
     useEffect(() => {
         const options = {
@@ -24,6 +25,7 @@ export const BuilderGenerator = ({ setShowResult }) => {
         };
 
         const fetchData = async () => {
+            setError();
             setLinearProgress(true)
             try {
                 const { data } = await axios.request(options); /*data =  is array with exercises objects */
@@ -33,7 +35,7 @@ export const BuilderGenerator = ({ setShowResult }) => {
                 }
             } catch (error) {
                 setLinearProgress(false)
-                //and show errror
+                setError(`An unexpected error has occurred on our servers. We apologize for the inconvenience and are working to resolve the issue as soon as possible. Please try again later.`);
             }
         }
 
@@ -59,6 +61,7 @@ export const BuilderGenerator = ({ setShowResult }) => {
             <Box m='2rem'>
                 <DirectionSnackbar setShowResult={setShowResult} />
             </Box>
+            {error && <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: { sm: '1.5rem' }, color: 'black', border: '2px solid red', bgcolor: '#f5bfcc', p: '1rem', width: { xs: '90%', sm: '80%' }, textAlign: 'justify', borderRadius: '10px' }}>{error}</Box>}
         </ExercisesContext.Provider>
     )
 }
