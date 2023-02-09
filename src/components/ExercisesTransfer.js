@@ -139,7 +139,7 @@ export const ExercisesTransfer = () => {
             </Box>
             <Box display='flex' alignItems='center' justifyContent='center'>
                     <Button
-                    sx={{ my: 0.5, fontSize: '1.5rem', height: 'max-content', border: '1px solid silver' }}
+                    sx={{ m: 0.5, fontSize: '1.5rem', height: 'max-content', border: '2px solid silver', borderRadius: '10px' }}
                         variant="contained"
                         size="small"
                         onClick={handleCheckedRight}

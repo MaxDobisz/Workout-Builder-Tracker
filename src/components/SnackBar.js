@@ -26,7 +26,7 @@ export const DirectionSnackbar = ({ setShowResult }) => {
 
     return (
         <div>
-            <Button onClick={handleClick(TransitionDown)} variant='contained'>NEXT</Button>
+            <Button onClick={handleClick(TransitionDown)} variant='contained' sx={{ border: '2px solid silver', borderRadius: '10px' }}>NEXT</Button>
             <Snackbar autoHideDuration={4000}
                 open={open}
                 onClose={handleClose}

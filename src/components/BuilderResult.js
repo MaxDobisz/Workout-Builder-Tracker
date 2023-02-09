@@ -85,7 +85,7 @@ export const BuilderResult = () => {
             {weekPlan}
             </Stack>
             <Box mt='1rem'>
-                <Button onClick={handleButtonClick} variant='contained' size="large">
+                <Button onClick={handleButtonClick} variant='contained' sx={{ border: '2px solid silver', borderRadius: '10px' }}>
                     Save
                 </Button>
             </Box>
