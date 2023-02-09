@@ -6,7 +6,7 @@ export const Tracker = () => {
 
     return (
         <Container>
-            {plans && plans.length > 0 ? <TrackerPlans plans={plans} /> : <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: '4rem', color: 'white' }}>You have no plans</Box>}
+            {plans && plans.length > 0 ? <TrackerPlans plans={plans} /> : <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: '4rem', color: 'white', width: '100%', textAlign: 'center' }}>You have no plans</Box>}
         </Container>
     )
 }
