@@ -47,7 +47,7 @@ export const BuilderResult = () => {
             return (
                 <Stack sx={{ bgcolor: 'white', border: '2px solid black', borderRadius: '5px', p: '1rem' }} key={uuid()}>
                     <Typography textAlign='center' fontWeight='600'>{`${day.toUpperCase()} (${exercises.length})`}</Typography>
-                    <Divider />
+                    <Divider sx={{ marginBottom: '1rem' }} />
                     <Stack gap={{ xs: '2rem', mds: '.5rem' }}>
                         {exercises.map(exercise => {
                             return (

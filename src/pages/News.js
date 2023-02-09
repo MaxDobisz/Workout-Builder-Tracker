@@ -19,7 +19,7 @@ export const News = () => {
                 toPublishedDate: 'null'
             },
             headers: {
-                'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISES_DB_KEY}`,
+                // 'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISES_DB_KEY}`,
                 'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
             }
         };
@@ -45,23 +45,19 @@ export const News = () => {
 
 
     return (
-        <Container>
-            <Stack gap='2rem'>
+        <Stack margin='0 auto' gap='2rem' height='90vh' width={{ xs: '90%', md: '60%' }} sx={{ overflowY: 'auto' }} borderRadius='10px' >
                 {linearProgress && <LinearProgress />}
                 {listOfArticles && listOfArticles.map((article) => {
                     return (
-                        <Stack bgcolor='black' color='white' borderRadius='10px' overflow='hidden' alignItems='center' p='1rem'>
+                        <Stack bgcolor='richBlack1' color='white' borderRadius='10px' alignItems='center' p='1rem'>
                             <img src={article.image.url} alt="" style={{ marginBottom: '1rem', height: '300px' }} />
                             <hr style={{ margin: 0, backgroundColor: 'white', width: '100%' }} />
                             <Typography fontWeight='600' fontSize='1.5rem' textAlign={"center"}> {article.title}</Typography>
                             <hr style={{ margin: 0, backgroundColor: 'white', width: '100%' }} />
                             <Typography fontWeight='400' fontSize='' textAlign={"justify"} mt='1rem'> {article.body}</Typography>
-                        </Stack>)
+                        </Stack>
+                    )
                 })}
-            </Stack>
-
-        </Container >
-
-
+        </Stack>
     )
 }

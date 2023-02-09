@@ -45,7 +45,7 @@ export const BuilderGenerator = ({ setShowResult }) => {
 
     return (
         <ExercisesContext.Provider value={{ listOfExercises, setSelectedTypeOfExercises, includeEquipment, setIncludeEquipment, linearProgress }}>
-            <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center' }} >
+            <Container maxWidth='lg' sx={{ display: 'flex', height: '90%', justifyContent: 'center', alignItems: 'center' }}>
                 <Stack spacing={3}>
                     <Box display='flex' flexWrap='wrap' alignItems='center' justifyContent='center' gap='1rem'>
                         <ExercisesSelector />

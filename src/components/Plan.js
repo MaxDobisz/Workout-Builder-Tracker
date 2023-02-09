@@ -15,8 +15,8 @@ export const Plan = ({ creationDate, days, id, deletePlan, itemNumber }) => {
             <Stack direction='row' alignItems='center'>
                 <WeekDetailsModal daysData={days} />
                 <Tooltip title="Delete">
-                    <IconButton>
-                        <DeleteOutlineIcon onClick={handleIconOnClick} sx={{ margin: '0 auto' }} />
+                    <IconButton onClick={handleIconOnClick}>
+                        <DeleteOutlineIcon sx={{ margin: '0 auto' }} />
                     </IconButton>
                 </Tooltip>
             </Stack>

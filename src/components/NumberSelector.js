@@ -1,10 +1,10 @@
 import { Box, FormControl, NativeSelect } from '@mui/material';
 
-export const NumberSelector = ({ onChange, optionsNumber }) => {
+export const NumberSelector = ({ onChange, optionsNumber, defaultValue = 1 }) => {
     const renderOptions = () => {
         let options = [];
 
-        for (let i = 1; i <= optionsNumber; i++) {
+        for (let i = defaultValue; i <= optionsNumber; i++) {
             options.push(<option value={i} key={i}>{i}</option>)
         }
 
@@ -20,7 +20,7 @@ export const NumberSelector = ({ onChange, optionsNumber }) => {
         <Box backgroundColor='white' >
             <FormControl fullWidth onChange={handleChange}>
                 <NativeSelect 
-                    defaultValue={1}
+                    defaultValue={defaultValue}
                     inputProps={{
                         name: 'day',
                         id: 'uncontrolled-native',
