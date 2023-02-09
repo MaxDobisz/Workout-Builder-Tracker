@@ -33,7 +33,7 @@ export const DirectionSnackbar = ({ setShowResult }) => {
                 TransitionComponent={transition}
                 key={transition ? transition.name : ''}
             >
-                <Alert severity="warning">Please select at least one exercise to continue building your workout plan</Alert>
+                <Alert severity="warning">Please asign at least one exercise to continue building your workout plan</Alert>
             </Snackbar>
         </div>
     );
