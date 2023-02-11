@@ -4,7 +4,6 @@ import { BuilderGenerator } from "../components/BuilderGenerator";
 import { BuilderResult } from "../components/BuilderResult";
 import { DaysContextProvider } from '../context/daysContext';
 
-
 export const Builder = () => {
     const [showResult, setShowResult] = useState(false);
 
