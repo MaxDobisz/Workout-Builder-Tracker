@@ -1,8 +1,17 @@
-# Fitness Application
+# Workout Builder/Tracker
+
+See the live version of [Workout Builder/Tracker](https://fitness-bskhwy20h-maxdobisz.vercel.app/). :point_left:
 
 ## User Story
 
-As a user, I want to be able to create a personalized workout plan that takes into account my preferences for cardio or weight training, equipment availability, desired level of difficulty, and frequency of training. Additionally, when selecting weight training, I want to have the option to focus on specific muscle groups or all muscle groups. I also want the ability to save my favorite workout plans for easy access in the future.
+As a user, I want to:
+
+- Have the option to choose between equipment or bodyweight training, as well as cardio exercises.
+- Select specific body parts I want to work on from the list and view available exercises I can assign to each day of the week.
+- Be able to specify the number of sets and reps for each exercise in the plan.
+- Save my customized workout plan for future reference.
+- Be able to create multiple plans and save them.
+- Easily access my saved plans and track my progress on each one.
 
 ## Acceptance Criteria
 
